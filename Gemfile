@@ -35,6 +35,8 @@ gem 'slim-rails'
 gem 'html2slim'
 # Bulmaを導入
 gem 'bulma-rails'
+# Reactを導入
+gem 'react-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
