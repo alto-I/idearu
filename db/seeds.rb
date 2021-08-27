@@ -9,14 +9,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do |n|
-  user = User.new(
-    name: "user#{n}",
-    email: "user#{n}@sample.com"
-  )
+  user = User.new(name: "user#{n}", email: "user#{n}@sample.com")
 
   user.ideas.build(
     title: "解決したい問題#{n}",
-    elevatorpitch: "エレベーターピッチ#{n}"
+    elevatorpitch: "エレベーターピッチ#{n}",
+  )
+
+  user.ideas.build(
+    title: "解決した問題#{n}",
+    elevatorpitch: "エレベーターピッチ#{n}",
+    solved: true,
   )
 
   user.save!

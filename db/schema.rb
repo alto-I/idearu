@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_08_26_094234) do
     t.bigint "user_id", null: false
     t.string "title", null: false
     t.text "elevatorpitch", null: false
+    t.boolean "solved", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_ideas_on_user_id"
