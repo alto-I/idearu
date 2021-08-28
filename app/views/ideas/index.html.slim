@@ -1,8 +1,11 @@
+/ = javascript_pack_tag 'hello_react', 'data-turbolinks-track': 'reload'
+= react_component("hello_react", name: 'World')
 h1 アイデア一覧
-= react_component("HelloWorld", { greeting: "こんにちは！"})
+/ = react_component("HelloWorld", { greeting: "こんにちは！"})
 
-- @ideas.each do |idea|
-  = idea.title
-  |  
-  = idea.elevatorpitch
-  br
+
+/ - @ideas.each do |idea|
+/   = idea.title
+/   |  
+/   = idea.elevatorpitch
+/   br
