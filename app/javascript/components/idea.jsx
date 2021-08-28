@@ -1,14 +1,10 @@
-import React from 'react'
-import { fetchIdeas } from '../apis/ideas'
-
-fetchIdeas()
-  .then((data) => console.log(data))
+import React, { useEffect } from "react";
+import { fetchIdeas } from "../apis/ideas";
 
 const Idea = () => {
-  return (
-    <div>
-      Ideaaa
-    </div>
-  )
-}
-export default Idea
+  useEffect(() => {
+    fetchIdeas().then((data) => console.log(data));
+  }, []);
+  return <div>Idea</div>;
+};
+export default Idea;
