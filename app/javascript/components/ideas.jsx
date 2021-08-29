@@ -1,12 +1,13 @@
-import React, { Fragment, useEffect, useReducer } from "react";
+import React, { Fragment, useEffect, useReducer } from 'react'
 
-import { fetchIdeas } from "../apis/ideas";
+import { fetchIdeas } from '../apis/ideas'
+import { REQUEST_STATE } from '../constants'
 
 import {
   initialState,
   ideasActionTypes,
   ideasReducer
-} from "../reducers/ideas";
+} from '../reducers/ideas'
 
 const Ideas = () => {
   const [state, dispatch] = useReducer(ideasReducer, initialState)
@@ -25,16 +26,16 @@ const Ideas = () => {
 
   return (
     <Fragment>
-      {console.log(state.ideasList)}
-      {state.ideasList.map(idea =>
-        <div key={idea.id}>
-          {idea.id}
-          {idea.user_id}
-          {idea.title}
-          {idea.elevatorpitch}
-          {idea.solved}
-        </div>
-      )}
+      {state.fetchState === REQUEST_STATE.LOADING
+        ? <Fragment>
+          ロード中
+        </Fragment>
+        : state.ideasList.map((idea) => (
+          <div key={idea.id}>
+            id:{idea.id} user_id:{idea.user_id} title:{idea.title} elevatorpitch:{idea.elevatorpitch} solved:{idea.solved}
+          </div>
+        ))
+      }
     </Fragment>
   )
 }
