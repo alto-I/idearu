@@ -3,6 +3,8 @@ import React, { Fragment, useEffect, useReducer } from 'react'
 import { fetchIdeas } from '../apis/ideas'
 import { REQUEST_STATE } from '../constants'
 
+import { FaRegHeart, FaComment } from "react-icons/fa";
+
 import {
   initialState,
   ideasActionTypes,
@@ -31,8 +33,16 @@ const Ideas = () => {
           ロード中
         </Fragment>
         : state.ideasList.map((idea) => (
-          <div key={idea.id}>
-            id:{idea.id} user_id:{idea.user_id} title:{idea.title} elevatorpitch:{idea.elevatorpitch} solved:{idea.solved}
+          <div className="card m-1" key={idea.id}>
+            <div className="icons">
+              <div className="icons-item">
+                <FaRegHeart /> 1
+              </div>
+              <div className="icons-item">
+                <FaComment /> 2
+              </div>
+            </div>
+            user_id:{idea.user_id} title:{idea.title} elevatorpitch:{idea.elevatorpitch}
           </div>
         ))
       }
