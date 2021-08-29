@@ -13,13 +13,13 @@
 
   user.ideas.build(
     title: "解決したい問題#{n}",
-    elevatorpitch: "エレベーターピッチ#{n}",
+    elevatorpitch: "エレベーターピッチ#{n}"
   )
 
   user.ideas.build(
     title: "解決した問題#{n}",
     elevatorpitch: "エレベーターピッチ#{n}",
-    solved: true,
+    solved: true
   )
 
   user.save!
