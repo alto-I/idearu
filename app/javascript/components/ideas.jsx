@@ -52,7 +52,7 @@ const Ideas = () => {
                     <FaUserCircle/>
                   </div>
                   <div className="column is-size-5">
-                    user_id:{idea.user_id}
+                    {idea.user_name}
                   </div>
                 </div>
               </div>
