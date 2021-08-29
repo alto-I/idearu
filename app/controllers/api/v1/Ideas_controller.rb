@@ -12,7 +12,7 @@ module Api
       private
 
       def fake_load
-        sleep(1)
+        sleep(0.3)
       end
     end
   end
