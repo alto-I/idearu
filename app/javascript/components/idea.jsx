@@ -37,9 +37,17 @@ const Idea = () => {
           ロード中
         </Fragment>
         : <Fragment>
-          <p>
-            {state.idea.title}
-          </p>
+          <div className="idea-container">
+            <div className="title">
+              {state.idea.title}
+            </div>
+            <div className="elevatorpitch-container">
+              {state.idea.elevatorpitch}
+            </div>
+            <div className="comment-container">
+              コメント
+            </div>
+          </div>
         </Fragment>
       }
     </Fragment>
