@@ -37,22 +37,24 @@ const Ideas = () => {
             <div className="idea-container columns m-1">
               <div className="icons column is-1">
                 <div className="icons-item is-size-5">
-                  1 <FaRegHeart />
+                  {idea.likes} <FaRegHeart />
                 </div>
                 <div className="icons-item is-size-5">
-                  2 <FaComment />
+                  {idea.comments} <FaComment />
                 </div>
               </div>
               <div className="idea column is-narrow">
                 <div className="is-size-5">
-                  {idea.title}
-                </div>
+                  <a href={`ideas/${idea.id}`}>
+                    {idea.title}
+                  </a>
+              </div>
                 <div className="user-container columns is-size-5">
                   <div className="idea column is-1 mr-1">
                     <FaUserCircle/>
                   </div>
                   <div className="column is-size-5">
-                    user_id:{idea.user_id}
+                    {idea.user_name}
                   </div>
                 </div>
               </div>

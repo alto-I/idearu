@@ -6,15 +6,13 @@ module Api
       before_action :fake_load
 
       def index
-        ideas = Idea.all
-
-        render json: { ideas: ideas }, status: :ok
+        @ideas = Idea.all
       end
 
       private
 
       def fake_load
-        sleep(1)
+        sleep(0.3)
       end
     end
   end
