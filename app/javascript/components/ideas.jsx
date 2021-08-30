@@ -28,18 +28,19 @@ const Ideas = () => {
 
   return (
     <Fragment>
-      {state.fetchState === REQUEST_STATE.LOADING ? (
-        <Fragment>ロード中</Fragment>
-      ) : (
-        state.ideasList.map((idea) => (
-          <div className="card m-1">
+      {state.fetchState === REQUEST_STATE.LOADING
+        ? <Fragment>
+          ロード中
+        </Fragment>
+        : state.ideasList.map((idea) => (
+          <div className="card m-1" >
             <div className="idea-container columns m-1">
               <div className="icons column is-1">
                 <div className="icons-item is-size-5">
-                  1 <FaRegHeart />
+                  {idea.likes} <FaRegHeart />
                 </div>
                 <div className="icons-item is-size-5">
-                  2 <FaComment />
+                  {idea.comments} <FaComment />
                 </div>
               </div>
               <div className="idea column is-narrow">
@@ -47,20 +48,22 @@ const Ideas = () => {
                   <a href={`ideas/${idea.id}`} key={idea.id}>
                     {idea.title}
                   </a>
-                </div>
+              </div>
                 <div className="user-container columns is-size-5">
                   <div className="idea column is-1 mr-1">
-                    <FaUserCircle />
+                    <FaUserCircle/>
                   </div>
-                  <div className="column is-size-5">{idea.user_name}</div>
+                  <div className="column is-size-5">
+                    {idea.user_name}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         ))
-      )}
+      }
     </Fragment>
-  );
+  )
 }
 
 export default Ideas
