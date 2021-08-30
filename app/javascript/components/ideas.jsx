@@ -33,7 +33,7 @@ const Ideas = () => {
           ロード中
         </Fragment>
         : state.ideasList.map((idea) => (
-          <div className="card m-1" key={idea.id}>
+          <div className="box m-1" key={idea.id}>
             <div className="idea-container columns m-1">
               <div className="icons column is-1">
                 <div className="icons-item is-size-5">

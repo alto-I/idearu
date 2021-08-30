@@ -36,23 +36,37 @@ const Idea = () => {
           ロード中
         </Fragment>
         : <Fragment>
-          <div className="idea-container">
-            <div className="is-size-2">
-              {state.idea.title}
-            </div>
-            <div className="elevatorpitch-container is-size-4">
-              {state.idea.elevatorpitch}
-            </div>
-            {state.comments.map((comment) => (
-                <div className="comment-container">
-                  <div>
-                    {comment.comment}
-                  </div>
-                  <div>
-                    {comment.user_name}
-                  </div>
+          <div className="container">
+            <div className="idea-container card">
+              <div className="card-header">
+                <div className="card-header-title is-size-4">
+                  {state.idea.title}という問題
+                </div>
               </div>
-            ))}
+              <div className="elevatorpitch-container card-content">
+                {state.idea.elevatorpitch}
+              </div>
+            </div>
+            <div className="comments-container">
+              <div className="comment-title has-text-weight-bold my-2">
+                コメント
+              </div>
+              {state.comments.map((comment) => (
+              <div className="comment-container box columns m-1">
+                <div className="user-container column is-1">
+                    <div class="user-icon">
+                      <FaUserCircle/>
+                    </div>
+                    <div className="user-name">
+                      {comment.user_name}
+                    </div>
+                </div>
+                <div className="comment-description column">
+                  {comment.comment}
+                </div>
+              </div>
+              ))}
+            </div>
           </div>
         </Fragment>
       }
