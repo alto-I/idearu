@@ -15,11 +15,7 @@ module Api
       private
 
       def set_idea
-        idea = Idea.find(params[:id])
-
-        render json: {
-          idea: idea
-        }, status: :ok
+        @idea = Idea.find(params[:id])
       end
 
       def fake_load
