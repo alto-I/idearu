@@ -12,4 +12,8 @@ html
   body
     header
       = render 'layouts/header.html.slim'
+    p.notice
+      = notice
+    p.alert
+      = alert
     = yield
