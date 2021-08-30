@@ -28,42 +28,39 @@ const Ideas = () => {
 
   return (
     <Fragment>
-      {state.fetchState === REQUEST_STATE.LOADING
-        ? <Fragment>
-          ロード中
-        </Fragment>
-        : state.ideasList.map((idea) => (
-          <a href={`ideas/${idea.id}`} key={idea.id}>
-            <div className="card m-1" >
-              <div className="idea-container columns m-1">
-                <div className="icons column is-1">
-                  <div className="icons-item is-size-5">
-                    1 <FaRegHeart />
-                  </div>
-                  <div className="icons-item is-size-5">
-                    2 <FaComment />
-                  </div>
+      {state.fetchState === REQUEST_STATE.LOADING ? (
+        <Fragment>ロード中</Fragment>
+      ) : (
+        state.ideasList.map((idea) => (
+          <div className="card m-1">
+            <div className="idea-container columns m-1">
+              <div className="icons column is-1">
+                <div className="icons-item is-size-5">
+                  1 <FaRegHeart />
                 </div>
-                <div className="idea column is-narrow">
-                  <div className="is-size-5">
+                <div className="icons-item is-size-5">
+                  2 <FaComment />
+                </div>
+              </div>
+              <div className="idea column is-narrow">
+                <div className="is-size-5">
+                  <a href={`ideas/${idea.id}`} key={idea.id}>
                     {idea.title}
+                  </a>
+                </div>
+                <div className="user-container columns is-size-5">
+                  <div className="idea column is-1 mr-1">
+                    <FaUserCircle />
                   </div>
-                  <div className="user-container columns is-size-5">
-                    <div className="idea column is-1 mr-1">
-                      <FaUserCircle/>
-                    </div>
-                    <div className="column is-size-5">
-                      {idea.user_name}
-                    </div>
-                  </div>
+                  <div className="column is-size-5">{idea.user_name}</div>
                 </div>
               </div>
             </div>
-          </a>
+          </div>
         ))
-      }
+      )}
     </Fragment>
-  )
+  );
 }
 
 export default Ideas
