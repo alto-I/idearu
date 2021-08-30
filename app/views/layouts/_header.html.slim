@@ -5,7 +5,13 @@ nav.navbar.is-success role="navigation" aria-label="main navigation"
   div.navbar-menu
     div.navbar-end
       div.navbar-item
-        div.buttons
-          a.button.is-light.is-small
-            strong ログイン
-
+        - if user_signed_in?
+          div.buttons
+            div.button.is-light.is-small
+              strong
+                = link_to('ログアウト', destroy_user_session_path, method: :delete)
+        - else
+          div.buttons
+            div.button.is-light.is-small
+              strong
+                = link_to('ログイン', new_user_session_path)

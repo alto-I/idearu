@@ -10,7 +10,7 @@
 
 # ユーザーを生成
 1.upto(10) do |n|
-  User.create!(name: "user#{n}", email: "user#{n}@sample.com")
+  User.create!(name: "user#{n}", email: "user#{n}@sample.com", password: 'password')
 end
 
 # アイデアデータを作成
