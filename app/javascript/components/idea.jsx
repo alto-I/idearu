@@ -22,13 +22,12 @@ const Idea = () => {
       dispatch({
         type: ideasActionTypes.FETCH_SUCCESS,
         payload: {
-          idea: data.idea
+          idea: data.idea,
+          comments: data.comments
         }
       })
     )
   }, [])
-
-  console.log(state.idea)
 
   return (
     <Fragment>
@@ -38,15 +37,22 @@ const Idea = () => {
         </Fragment>
         : <Fragment>
           <div className="idea-container">
-            <div className="title">
+            <div className="is-size-2">
               {state.idea.title}
             </div>
-            <div className="elevatorpitch-container">
+            <div className="elevatorpitch-container is-size-4">
               {state.idea.elevatorpitch}
             </div>
-            <div className="comment-container">
-              コメント
-            </div>
+            {state.comments.map((comment) => (
+                <div className="comment-container">
+                  <div>
+                    {comment.comment}
+                  </div>
+                  <div>
+                    {comment.user_name}
+                  </div>
+              </div>
+            ))}
           </div>
         </Fragment>
       }

@@ -2,7 +2,8 @@ import { REQUEST_STATE } from '../constants'
 
 export const initialState = {
   fetchState: REQUEST_STATE,
-  idea: []
+  idea: [],
+  comments: []
 }
 
 export const ideasActionTypes = {
@@ -20,7 +21,8 @@ export const ideasReducer = (state, action) => {
     case ideasActionTypes.FETCH_SUCCESS:
       return {
         fetchState: REQUEST_STATE.OK,
-        idea: action.payload.idea
+        idea: action.payload.idea,
+        comments: action.payload.comments
       }
     default:
       throw new Error()
