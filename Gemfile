@@ -37,6 +37,8 @@ gem 'html2slim'
 gem 'bulma-rails'
 # Reactを導入
 gem 'react-rails'
+# ログイン機能を実装
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

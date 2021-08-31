@@ -34,7 +34,7 @@ const Ideas = () => {
         </Fragment>
         : state.ideasList.map((idea) => (
           <div className="box m-1" key={idea.id}>
-            <div className="idea-container columns m-1">
+            <div className="idea-container columns">
               <div className="icons column is-1">
                 <div className="icons-item is-size-5">
                   {idea.likes} <FaRegHeart />
