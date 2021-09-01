@@ -1,13 +1,15 @@
-h1
-  | 投稿確認ページ
+h1.is-size-4
+  | 投稿確認
+p 以下のように作成します。よろしいですか？
 
 = form_with do |form|
   = form.label :title
   br
-  = form.text_field :title, value: @idea.title
+  = form.text_field :title, value: @idea.title, size: 60
   br
   = form.label :elevatorpitch
   br
-  = form.text_field :elevatorpitch, value: @idea.elevatorpitch
+  = form.text_area :elevatorpitch, value: @idea.elevatorpitch, size: "60x10"
+  br
   br
   = form.submit '投稿', class: "button is-success"
