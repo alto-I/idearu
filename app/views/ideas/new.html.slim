@@ -1,0 +1,17 @@
+h1.is-size-1
+  | 新規投稿ページ
+
+= form_with(url: '/ideas/confirm', method: "post") do |form|
+  = form.label :title
+  br
+  = form.text_field :title
+  br
+  = form.label :elevatorpitch
+  br
+  = form.text_field :elevatorpitch
+  br
+  = form.label :elevatorpitch
+  br
+  = form.text_field :elevatorpitch
+  br
+  = form.submit '投稿', class: "button is-success"

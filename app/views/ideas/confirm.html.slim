@@ -1,0 +1,13 @@
+h1
+  | 投稿確認ページ
+
+= form_with do |form|
+  = form.label :title
+  br
+  = form.text_field :title, value: @idea.title
+  br
+  = form.label :elevatorpitch
+  br
+  = form.text_field :elevatorpitch, value: @idea.elevatorpitch
+  br
+  = form.submit '投稿', class: "button is-success"

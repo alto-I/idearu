@@ -9,6 +9,9 @@ nav.navbar.is-success role="navigation" aria-label="main navigation"
           div.buttons
             div.button.is-light.is-small
               strong
+                = link_to('新規投稿', new_idea_path)
+            div.button.is-light.is-small
+              strong
                 = link_to('ログアウト', destroy_user_session_path, method: :delete)
         - else
           div.buttons
