@@ -46,8 +46,9 @@ const Ideas = () => {
               <div className="idea column is-narrow">
                 <div className="is-size-5">
                   <a href={`ideas/${idea.id}`}>
-                    {idea.title}という問題を解決したい
+                    {idea.title}
                   </a>
+                  という問題を解決したい
               </div>
                 <div className="user-container columns is-size-5">
                   <div className="idea column is-1 mr-1">
