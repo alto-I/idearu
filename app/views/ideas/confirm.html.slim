@@ -2,7 +2,7 @@ h1.is-size-4
   | 投稿確認
 p 以下のように作成します。よろしいですか？
 
-= form_with do |form|
+= form_with model: @idea, url:ideas_path do |form|
   = form.label :title
   br
   = form.text_field :title, value: @idea.title, size: 60
