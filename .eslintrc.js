@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true,
@@ -27,5 +28,6 @@ module.exports = {
     'flowtype/no-types-missing-file-annotation': 'off',
     'flowtype/define-flow-type': 'warn',
     'flowtype/use-flow-type': 'warn',
+    'no-console': 'off',
   },
 }
