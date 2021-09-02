@@ -1,15 +1,10 @@
 import React, { Fragment, useEffect, useReducer } from 'react'
 
-import { fetchIdea } from '../apis/idea'
+import { FaUserCircle } from 'react-icons/fa'
+import fetchIdea from '../apis/idea'
 import { REQUEST_STATE } from '../constants'
 
-import { FaRegHeart, FaComment, FaUserCircle } from "react-icons/fa";
-
-import {
-  initialState,
-  ideasActionTypes,
-  ideasReducer
-} from '../reducers/idea'
+import { initialState, ideasActionTypes, ideasReducer } from '../reducers/idea'
 
 const Idea = () => {
   const [state, dispatch] = useReducer(ideasReducer, initialState)
@@ -23,19 +18,18 @@ const Idea = () => {
         type: ideasActionTypes.FETCH_SUCCESS,
         payload: {
           idea: data.idea,
-          comments: data.comments
-        }
+          comments: data.comments,
+        },
       })
     )
-  }, [])
+  }, [params])
 
   return (
-    <Fragment>
-      {state.fetchState === REQUEST_STATE.LOADING
-        ? <Fragment>
-          ロード中
-        </Fragment>
-        : <Fragment>
+    <>
+      {state.fetchState === REQUEST_STATE.LOADING ? (
+        <>ロード中</>
+      ) : (
+        <>
           <div className="container">
             <div className="idea-container card">
               <div className="card-header">
@@ -52,25 +46,23 @@ const Idea = () => {
                 コメント
               </div>
               {state.comments.map((comment) => (
-              <div className="comment-container box columns m-1">
-                <div className="user-container column is-1">
-                    <div class="user-icon">
-                      <FaUserCircle/>
+                <div className="comment-container box columns m-1">
+                  <div className="user-container column is-1">
+                    <div className="user-icon">
+                      <FaUserCircle />
                     </div>
-                    <div className="user-name">
-                      {comment.user_name}
-                    </div>
+                    <div className="user-name">{comment.user_name}</div>
+                  </div>
+                  <div className="comment-description column">
+                    {comment.comment}
+                  </div>
                 </div>
-                <div className="comment-description column">
-                  {comment.comment}
-                </div>
-              </div>
               ))}
             </div>
           </div>
-        </Fragment>
-      }
-    </Fragment>
+        </>
+      )}
+    </>
   )
 }
 

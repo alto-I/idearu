@@ -1,15 +1,10 @@
 import React, { Fragment, useEffect, useReducer } from 'react'
 
-import { fetchIdeas } from '../apis/ideas'
+import { FaRegHeart, FaComment, FaUserCircle } from 'react-icons/fa'
+import fetchIdeas from '../apis/ideas'
 import { REQUEST_STATE } from '../constants'
 
-import { FaRegHeart, FaComment, FaUserCircle } from "react-icons/fa";
-
-import {
-  initialState,
-  ideasActionTypes,
-  ideasReducer
-} from '../reducers/ideas'
+import { initialState, ideasActionTypes, ideasReducer } from '../reducers/ideas'
 
 const Ideas = () => {
   const [state, dispatch] = useReducer(ideasReducer, initialState)
@@ -20,19 +15,18 @@ const Ideas = () => {
       dispatch({
         type: ideasActionTypes.FETCH_SUCCESS,
         payload: {
-          ideas: data.ideas
-        }
+          ideas: data.ideas,
+        },
       })
     )
   }, [])
 
   return (
-    <Fragment>
-      {state.fetchState === REQUEST_STATE.LOADING
-        ? <Fragment>
-          ロード中
-        </Fragment>
-        : state.ideasList.map((idea) => (
+    <>
+      {state.fetchState === REQUEST_STATE.LOADING ? (
+        <>ロード中</>
+      ) : (
+        state.ideasList.map((idea) => (
           <div className="box m-1" key={idea.id}>
             <div className="idea-container columns">
               <div className="icons column is-1">
@@ -45,25 +39,21 @@ const Ideas = () => {
               </div>
               <div className="idea column is-narrow">
                 <div className="is-size-5">
-                  <a href={`ideas/${idea.id}`}>
-                    {idea.title}
-                  </a>
+                  <a href={`ideas/${idea.id}`}>{idea.title}</a>
                   という問題を解決したい
-              </div>
+                </div>
                 <div className="user-container columns is-size-5">
                   <div className="idea column is-1 mr-1">
-                    <FaUserCircle/>
+                    <FaUserCircle />
                   </div>
-                  <div className="column is-size-5">
-                    {idea.user_name}
-                  </div>
+                  <div className="column is-size-5">{idea.user_name}</div>
                 </div>
               </div>
             </div>
           </div>
         ))
-      }
-    </Fragment>
+      )}
+    </>
   )
 }
 
