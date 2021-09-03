@@ -3,9 +3,9 @@
 module Api
   module V1
     class LikesController < ApplicationController
-      before_action :set_idea, only: %i[index create]
+      before_action :set_idea, only: %i[show]
 
-      def index
+      def show
         like = Like.where(
           user: current_user,
           idea: @idea
@@ -17,12 +17,8 @@ module Api
       end
 
       def create
-        like = Like.create!(
-          user: current_user,
-          idea: @idea
-        )
-
-        render status: :create, json: like
+        like = current_user.likes.create!(idea_params)
+        render json: like
       end
 
       def destroy
@@ -30,11 +26,14 @@ module Api
         head :no_content
       end
 
-
       private
 
       def set_idea
-        @idea = Idea.find(params[:idea])
+        @idea = Idea.find(params[:id])
+      end
+
+      def idea_params
+        params.require(:like).permit(:idea_id)
       end
     end
   end

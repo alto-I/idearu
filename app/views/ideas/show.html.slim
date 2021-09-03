@@ -1,1 +1,4 @@
 = react_component("idea")
+.container
+  p 欲しい数
+  = react_component("like", ideaId: @idea.id, prerender: false)
