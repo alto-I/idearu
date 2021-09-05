@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'ideas#index'
   post 'ideas/new/confirm', to: 'ideas#confirm'
   resources :ideas, only: %i[show new create] do
-    resources :comments, only: [:create]
+    resources :comments, only: %i[create destroy]
   end
   namespace :api do
     namespace :v1 do
