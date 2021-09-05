@@ -1,4 +1,23 @@
-= react_component("idea")
+div.container
+  div.idea-container.card
+    div.card-header
+      div.card-header-title.is-size-4
+        = @idea.title
+          | という問題
+    div.elevatorpitch-container.card-content
+      = @idea.elevatorpitch
+  div.comments-container
+    div.comment-title.has-text-weight-bold.my-2
+      | コメント
+    - @idea.comments.each do |comment|
+      div.comment-container.box.columns.m-1
+        div.user-container.column.is-1
+          div.user-icon
+            / <FaUserCircle />
+          div.user-name
+            = comment.user.name
+        div.comment-description.column
+          = comment.comment
 .container
   p 欲しい数
   = react_component("like", ideaId: @idea.id, prerender: false)
