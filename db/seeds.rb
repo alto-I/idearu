@@ -68,6 +68,6 @@ end
 
   2.times do
     Like.create!(user_id: user.id, idea_id: Idea.all.sample.id)
-    Comment.create!(user_id: user.id, idea_id: Idea.all.sample.id, comment: "コメント#{n}")
+    Comment.create!(user_id: user.id, idea_id: Idea.all.sample.id, content: "コメント#{n}")
   end
 end

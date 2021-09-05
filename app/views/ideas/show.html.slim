@@ -17,7 +17,18 @@ div.container
           div.user-name
             = comment.user.name
         div.comment-description.column
-          = comment.comment
+          = comment.content
+        - if user_signed_in? && comment.user_id == current_user.id
+          div.comment-destroy.column
+            = link_to('削除', idea_comment_path(@idea, comment), method: :delete)
+  - if user_signed_in?
+    = form_with(model: [@idea, @comment]) do |form|
+      = form.text_area :content
+      = form.hidden_field :idea_id, value: @idea.id
+      = form.submit
+  - else
+    p コメントするにはログインが必要です。
+
 .container
   p 欲しい数
   = react_component("like", ideaId: @idea.id, prerender: false)
