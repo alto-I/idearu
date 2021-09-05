@@ -3,11 +3,15 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: %i[show]
   before_action :authenticate_user!, only: %i[new confirm create]
+
   def index
     @ideas = Idea.all
   end
 
-  def show; end
+  def show
+    @comments = @idea.comments
+    @comment = current_user.comments.new if user_signed_in?
+  end
 
   def new
     @idea = Idea.new
