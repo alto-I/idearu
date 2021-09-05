@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useReducer } from 'react'
-
 import { FaUserCircle } from 'react-icons/fa'
+import Like from './like'
+
 import fetchIdea from '../apis/idea'
 import { REQUEST_STATE } from '../constants'
 
