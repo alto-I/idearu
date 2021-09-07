@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useReducer } from 'react'
+import React, { Fragment, useEffect, useReducer, useState } from 'react'
 
 import { FaRegHeart, FaComment, FaUserCircle } from 'react-icons/fa'
 import fetchIdeas from '../apis/ideas'
@@ -8,10 +8,11 @@ import { initialState, ideasActionTypes, ideasReducer } from '../reducers/ideas'
 
 const Ideas = () => {
   const [state, dispatch] = useReducer(ideasReducer, initialState)
+  const [solved, setSolved] = useState(false)
 
   useEffect(() => {
     dispatch({ type: ideasActionTypes.FETCHING })
-    fetchIdeas().then((data) =>
+    fetchIdeas(solved).then((data) =>
       dispatch({
         type: ideasActionTypes.FETCH_SUCCESS,
         payload: {
@@ -21,8 +22,52 @@ const Ideas = () => {
     )
   }, [])
 
+  const fetchIdeaSolved = () => {
+    dispatch({ type: ideasActionTypes.FETCHING })
+    fetchIdeas(true).then((data) =>
+      dispatch({
+        type: ideasActionTypes.FETCH_SUCCESS,
+        payload: {
+          ideas: data.ideas,
+        },
+      })
+    )
+    setSolved(true)
+  }
+
+  const fetchIdeaNotSolved = () => {
+    dispatch({ type: ideasActionTypes.FETCHING })
+    fetchIdeas(false).then((data) =>
+      dispatch({
+        type: ideasActionTypes.FETCH_SUCCESS,
+        payload: {
+          ideas: data.ideas,
+        },
+      })
+    )
+    setSolved(false)
+  }
+
   return (
     <>
+      <div className="container button-container m-1">
+        <div className="buttons has-addons">
+          <button
+            className={solved ? 'button' : 'button is-success is-selected'}
+            type="button"
+            onClick={fetchIdeaNotSolved}
+          >
+            未解決
+          </button>
+          <button
+            className={solved ? 'button is-danger is-selected' : 'button'}
+            type="button"
+            onClick={fetchIdeaSolved}
+          >
+            解決済
+          </button>
+        </div>
+      </div>
       {state.fetchState === REQUEST_STATE.LOADING ? (
         <>ロード中</>
       ) : (

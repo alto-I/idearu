@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const fetchIdeas = () =>
+const fetchIdeas = (solved) =>
   axios
-    .get('/api/v1/ideas.json')
+    .get(`/api/v1/ideas.json?solved=${solved}`)
     .then((res) => res.data)
     .catch((e) => console.error(e))
 
