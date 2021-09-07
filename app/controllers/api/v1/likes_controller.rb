@@ -12,13 +12,18 @@ module Api
         )
 
         render json: {
-          like: like
+          like: like,
+          totalLike: @idea.likes.length
         }, status: :ok
       end
 
       def create
         like = current_user.likes.create!(idea_params)
-        render json: like
+        idea = Idea.find(params[:like][:idea_id])
+        render json: {
+          like: like,
+          totalLike: idea.likes.length
+        }
       end
 
       def destroy

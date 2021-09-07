@@ -8,27 +8,33 @@ axios.defaults.headers['X-CSRF-TOKEN'] = document
   .getAttribute('content')
 
 const Like = (props) => {
+  const { ideaId } = props
   const [like, setLike] = useState([])
+  const [totalLike, setTotalLike] = useState(0)
 
   useEffect(() => {
-    fetchLike(props.ideaId).then((data) => {
+    fetchLike(ideaId).then((data) => {
       setLike(data.like)
+      setTotalLike(data.totalLike)
     })
-  }, [props])
+  }, [])
 
   const postLike = () => {
-    axios.post('/api/v1/likes', { idea_id: props.ideaId }).then((response) => {
-      setLike([response.data])
+    axios.post('/api/v1/likes', { idea_id: ideaId }).then((response) => {
+      setLike([response.data.like])
+      setTotalLike([response.data.totalLike])
     })
   }
 
   const deleteLike = () => {
     axios.delete(`/api/v1/likes/${like[0].id}`)
     setLike([])
+    setTotalLike(totalLike - 1)
   }
 
   return (
     <>
+      {totalLike}
       {like.length ? (
         <span className="likeButton" onClick={deleteLike}>
           <AiFillHeart />

@@ -29,5 +29,6 @@ module.exports = {
     'flowtype/define-flow-type': 'warn',
     'flowtype/use-flow-type': 'warn',
     'no-console': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
 }
