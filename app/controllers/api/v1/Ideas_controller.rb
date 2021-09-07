@@ -7,7 +7,12 @@ module Api
       before_action :set_idea, only: %i[show]
 
       def index
-        @ideas = Idea.all
+        @ideas =
+          if params[:solved] == 'false'
+            Idea.all.where(solved: false)
+          else
+            Idea.all.where(solved: true)
+          end
       end
 
       def show; end
