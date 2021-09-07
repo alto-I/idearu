@@ -28,7 +28,7 @@ div.container
       = form.submit
   - else
     p コメントするにはログインが必要です。
-
-.container
-  p 欲しい数
-  = react_component("like", ideaId: @idea.id, prerender: false)
+  - if user_signed_in?
+    .container
+      p 欲しい数
+      = react_component("like", ideaId: @idea.id, prerender: false)
