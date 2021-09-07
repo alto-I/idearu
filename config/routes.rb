@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :ideas, only: %i[show new create] do
     resources :comments, only: %i[create destroy]
   end
+  resources :users, only: %i[show]
+
   namespace :api do
     namespace :v1 do
       resources :ideas, only: %i[index show]
