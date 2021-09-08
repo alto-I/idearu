@@ -1,0 +1,13 @@
+div.container.box
+  p.is-size-2 マイページ
+  div.user_column
+    div.user_name
+      p.label ユーザーネーム:
+      = @user.name
+    - if @user.id == current_user.id
+      div.user_email
+        p.label メールアドレス:
+        = @user.email
+      div.button.is-light.is-small
+        strong
+        = link_to('編集', edit_user_registration_path)

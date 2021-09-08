@@ -6,6 +6,18 @@ div.container
           | という問題
     div.elevatorpitch-container.card-content
       = @idea.elevatorpitch
+  p 解決済み？
+  = @idea.solved
+  br
+  - if user_signed_in? && current_user.admin?
+    - if @idea.solved
+      = link_to('未解決にする', "/ideas/#{params[:id]}/not_solved", method: :post)
+    - else
+      = link_to('解決済みにする', "/ideas/#{params[:id]}/solved", method: :post)
+  br
+  = @idea.user.name
+  - if user_signed_in?
+    = react_component("like", ideaId: @idea.id, prerender: false)
   div.comments-container
     div.comment-title.has-text-weight-bold.my-2
       | コメント
@@ -28,7 +40,4 @@ div.container
       = form.submit
   - else
     p コメントするにはログインが必要です。
-  - if user_signed_in?
-    .container
-      p 欲しい数
-      = react_component("like", ideaId: @idea.id, prerender: false)
+
