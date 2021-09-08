@@ -1,0 +1,23 @@
+.ideas-container {
+  position: relative;
+}
+
+.new-idea-button-container {
+  color: black;
+  position: fixed;
+  top: 85%;
+  left: 80%;
+}
+
+.new-idea-button {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}

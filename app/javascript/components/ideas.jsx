@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useReducer, useState } from 'react'
+import '../stylesheets/ideas.css'
 
-import { FaRegHeart, FaComment, FaUserCircle } from 'react-icons/fa'
+import { FaRegHeart, FaComment, FaUserCircle, FaPlus } from 'react-icons/fa'
 import fetchIdeas from '../apis/ideas'
 import { REQUEST_STATE } from '../constants'
 
@@ -49,7 +50,7 @@ const Ideas = () => {
   }
 
   return (
-    <>
+    <div className="ideas-container">
       <div className="container button-container m-1">
         <div className="buttons has-addons">
           <button
@@ -98,7 +99,16 @@ const Ideas = () => {
           </div>
         ))
       )}
-    </>
+      <a
+        href="/ideas/new"
+        className="new-idea-button-container is-hidden-desktop"
+      >
+        <div className="new-idea-button">
+          <FaPlus />
+        </div>
+        <div className="new-idea-button-content">投稿する</div>
+      </a>
+    </div>
   )
 }
 
