@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import '../stylesheets/ideas.css'
 
 import { FaRegHeart, FaComment, FaUserCircle, FaPlus } from 'react-icons/fa'
@@ -47,6 +47,16 @@ const Ideas = () => {
       })
     )
     setSolved(false)
+  }
+
+  const sortLike = (arr) => {
+    arr.sort((a, b) => {
+      if (a.likes < b.likes) {
+        return -1
+      }
+      return 1
+    })
+    console.log()
   }
 
   return (

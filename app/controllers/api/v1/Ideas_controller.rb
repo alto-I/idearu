@@ -9,9 +9,9 @@ module Api
       def index
         @ideas =
           if params[:solved] == 'false'
-            Idea.all.where(solved: false).order(:created_at, :id)
+            Idea.all.where(solved: false).order(created_at: 'DESC')
           else
-            Idea.all.where(solved: true).order(:created_at, :id)
+            Idea.all.where(solved: true).order(created_at: 'DESC')
           end
       end
 
