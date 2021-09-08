@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class IdeasController < ApplicationController
-  before_action :set_idea, only: %i[show]
+  before_action :set_idea, only: %i[show solved not_solved]
   before_action :authenticate_user!, only: %i[new confirm create]
 
   def index
@@ -35,6 +35,18 @@ class IdeasController < ApplicationController
   def create
     @idea = current_user.ideas.new(idea_params)
     @idea.save
+    redirect_to idea_path(id: @idea.id)
+  end
+
+  def solved
+    @idea.solved = true
+    @idea.save
+    redirect_to idea_path(id: @idea.id)
+  end
+
+  def not_solved
+    @idea.solved = false
+    @idea.save!
     redirect_to idea_path(id: @idea.id)
   end
 
