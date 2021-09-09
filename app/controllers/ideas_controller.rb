@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class IdeasController < ApplicationController
-  before_action :set_idea, only: %i[show solved not_solved]
-  before_action :authenticate_user!, only: %i[new confirm create]
+  before_action :set_idea, only: %i[show edit update destroy solved not_solved]
+  before_action :authenticate_user!,
+                only: %i[new confirm create edit update destroy]
 
   def index
     @ideas = Idea.all
@@ -27,7 +28,7 @@ class IdeasController < ApplicationController
         params[:category],
         params[:appeal_point],
         params[:competitive_services],
-        params[:differentiation_factor]
+        params[:differentiation_factor],
       )
     @idea = Idea.new(title: title, elevatorpitch: elevatorpitch)
   end
@@ -36,6 +37,21 @@ class IdeasController < ApplicationController
     @idea = current_user.ideas.new(idea_params)
     @idea.save
     redirect_to idea_path(id: @idea.id)
+  end
+
+  def edit; end
+
+  def update
+    if @idea.update(idea_params)
+      redirect_to @idea, notice: 'Idea was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @idea.destroy
+    redirect_to root_path, notice: '投稿されたサービス案を削除しました。'
   end
 
   def solved

@@ -18,6 +18,9 @@ div.container
   = @idea.user.name
   - if user_signed_in?
     = react_component("like", ideaId: @idea.id, prerender: false)
+    if current_user.id == @idea.user.id
+      = link_to('編集', edit_idea_path(@idea))
+      = link_to('削除', @idea, method: :delete, data: { confirm: '本当に削除してよろしいですか?' })
   div.comments-container
     div.comment-title.has-text-weight-bold.my-2
       | コメント
