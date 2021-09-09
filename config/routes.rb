@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post 'ideas/new/confirm', to: 'ideas#confirm'
   post 'ideas/:id/solved', to: 'ideas#solved'
   post 'ideas/:id/not_solved', to: 'ideas#not_solved'
-  resources :ideas, only: %i[show new create] do
+  resources :ideas, only: %i[show new create edit update destroy] do
     resources :comments, only: %i[create destroy]
   end
   resources :users, only: %i[show]

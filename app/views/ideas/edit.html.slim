@@ -1,0 +1,12 @@
+h1 編集ページ
+= form_with(model: @idea, local: true) do |form|
+  div.field
+    = form.label :title
+    br
+    = form.text_field :title, value: @idea.title, size: 60
+  div.field
+    = form.label :elevatorpitch
+    br
+    = form.text_area :elevatorpitch, value: @idea.elevatorpitch, size: "60x10"
+  div.actions
+    = form.submit '編集完了', class: "button is-success"
