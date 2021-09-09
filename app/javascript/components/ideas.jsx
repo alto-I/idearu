@@ -10,10 +10,11 @@ import { initialState, ideasActionTypes, ideasReducer } from '../reducers/ideas'
 const Ideas = () => {
   const [state, dispatch] = useReducer(ideasReducer, initialState)
   const [solved, setSolved] = useState(false)
+  const [sort, setSort] = useState('created')
 
   useEffect(() => {
     dispatch({ type: ideasActionTypes.FETCHING })
-    fetchIdeas(solved).then((data) =>
+    fetchIdeas(false).then((data) =>
       dispatch({
         type: ideasActionTypes.FETCH_SUCCESS,
         payload: {
@@ -22,6 +23,55 @@ const Ideas = () => {
       })
     )
   }, [])
+
+  const ideaSortCreated = () => {
+    const createdIdeaList = state.ideasList.sort((a, b) => {
+      if (a.createdAt > b.createdAt) {
+        return -1
+      }
+      return 1
+    })
+    dispatch({
+      type: ideasActionTypes.FETCH_SUCCESS,
+      payload: {
+        ideas: createdIdeaList,
+      },
+    })
+    setSort('created')
+  }
+
+  const ideaSortLikes = () => {
+    console.log('実行されてる？')
+    const likesIdeaList = state.ideasList.sort((a, b) => {
+      if (a.likes > b.likes) {
+        return -1
+      }
+      return 1
+    })
+    dispatch({
+      type: ideasActionTypes.FETCH_SUCCESS,
+      payload: {
+        ideas: likesIdeaList,
+      },
+    })
+    setSort('likes')
+  }
+
+  const ideaSortLatestComments = () => {
+    const latestCommentIdeaList = state.ideasList.sort((a, b) => {
+      if (a.latestCommentDate > b.latestCommentDate) {
+        return -1
+      }
+      return 1
+    })
+    dispatch({
+      type: ideasActionTypes.FETCH_SUCCESS,
+      payload: {
+        ideas: latestCommentIdeaList,
+      },
+    })
+    setSort('comments')
+  }
 
   const fetchIdeaSolved = () => {
     dispatch({ type: ideasActionTypes.FETCHING })
@@ -34,6 +84,7 @@ const Ideas = () => {
       })
     )
     setSolved(true)
+    setSort('created')
   }
 
   const fetchIdeaNotSolved = () => {
@@ -47,20 +98,42 @@ const Ideas = () => {
       })
     )
     setSolved(false)
-  }
-
-  const sortLike = (arr) => {
-    arr.sort((a, b) => {
-      if (a.likes < b.likes) {
-        return -1
-      }
-      return 1
-    })
-    console.log()
+    setSort('created')
   }
 
   return (
     <div className="ideas-container">
+      <div className="container button-container m-1">
+        <div className="buttons has-addons">
+          <button
+            className={
+              sort === 'created' ? 'button is-success is-selected' : 'button'
+            }
+            type="button"
+            onClick={ideaSortCreated}
+          >
+            新着順
+          </button>
+          <button
+            className={
+              sort === 'likes' ? 'button is-success is-selected' : 'button'
+            }
+            type="button"
+            onClick={ideaSortLikes}
+          >
+            欲しい！順
+          </button>
+          <button
+            className={
+              sort === 'comments' ? 'button is-success is-selected' : 'button'
+            }
+            type="button"
+            onClick={ideaSortLatestComments}
+          >
+            コメント順
+          </button>
+        </div>
+      </div>
       <div className="container button-container m-1">
         <div className="buttons has-addons">
           <button
