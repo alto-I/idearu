@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      idea: アイデア
+      like: 欲しい
+      comment: コメント
+    attributes:
+      user:
+        name: 名前
+        admin: 管理者
+        email: メールアドレス
+        encrypted_password: パスワード
+      idea:
+        title: タイトル
+        elevatorpitch: エレベーターピッチ
+      comment:
+        content: コメント文
