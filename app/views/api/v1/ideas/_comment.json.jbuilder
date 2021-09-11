@@ -1,2 +1,2 @@
 json.comment comment.comment
-json.user_name comment.user.name
+json.userName comment.user.name
