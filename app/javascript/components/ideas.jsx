@@ -14,7 +14,7 @@ const Ideas = () => {
 
   useEffect(() => {
     dispatch({ type: ideasActionTypes.FETCHING })
-    fetchIdeas(false).then((data) =>
+    fetchIdeas(solved).then((data) =>
       dispatch({
         type: ideasActionTypes.FETCH_SUCCESS,
         payload: {
@@ -175,7 +175,7 @@ const Ideas = () => {
                   <div className="idea column is-1 mr-1">
                     <FaUserCircle />
                   </div>
-                  <div className="column is-size-5">{idea.user_name}</div>
+                  <div className="column is-size-5">{idea.userName}</div>
                 </div>
               </div>
             </div>
