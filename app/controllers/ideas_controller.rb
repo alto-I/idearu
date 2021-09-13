@@ -2,8 +2,7 @@
 
 class IdeasController < ApplicationController
   before_action :set_idea, only: %i[show edit update destroy solved not_solved]
-  before_action :authenticate_user!,
-                only: %i[new confirm create edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy solved not_solved]
 
   def index
     @ideas = Idea.all
@@ -14,11 +13,9 @@ class IdeasController < ApplicationController
     @comment = current_user.comments.new if user_signed_in?
   end
 
-  def new
-    @idea = Idea.new
-  end
+  def new; end
 
-  def confirm
+  def create
     title = params[:problem]
     elevatorpitch =
       create_elevorpitch(
@@ -30,11 +27,7 @@ class IdeasController < ApplicationController
         params[:competitive_services],
         params[:differentiation_factor],
       )
-    @idea = Idea.new(title: title, elevatorpitch: elevatorpitch)
-  end
-
-  def create
-    @idea = current_user.ideas.new(idea_params)
+    @idea = current_user.ideas.new(title: title, elevatorpitch: elevatorpitch)
     @idea.save
     redirect_to idea_path(id: @idea.id)
   end
@@ -43,7 +36,7 @@ class IdeasController < ApplicationController
 
   def update
     if @idea.update(idea_params)
-      redirect_to @idea, notice: 'Idea was successfully updated.'
+      redirect_to @idea, notice: 'サービス案を更新しました。'
     else
       render :edit
     end

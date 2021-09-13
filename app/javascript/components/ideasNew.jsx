@@ -12,6 +12,7 @@ const IdeasNew = () => {
   })
 
   const hundleClick = () => {
+    console.log(document.getElementById('problem'))
     const problem = document.getElementById('problem').value || '解決したい問題'
     const target = document.getElementById('target').value || 'ターゲット'
     const service = document.getElementById('service').value || 'サービス名'

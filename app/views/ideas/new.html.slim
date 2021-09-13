@@ -4,7 +4,7 @@ p 質問に対する回答を入力して下さい。
 
 div.columns
   div.column
-    = form_with(url: '/ideas/new/confirm', method: "post") do |form|
+    = form_with(model: @idea, url:ideas_path) do |form|
       = form.label :problem, "1.背景・解決したい問題は？"
       br
       = form.text_field :problem, size: 40
