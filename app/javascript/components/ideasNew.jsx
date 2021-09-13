@@ -11,7 +11,7 @@ const IdeasNew = () => {
     differentiationFactor: '差別化要素',
   })
 
-  const hundleClick = () => {
+  const updateImages = () => {
     const problem = document.getElementById('problem').value || '解決したい問題'
     const target = document.getElementById('target').value || 'ターゲット'
     const service = document.getElementById('service').value || 'サービス名'
@@ -43,7 +43,7 @@ const IdeasNew = () => {
         <div className="column">
           <button
             className="button is-info m-1"
-            onClick={hundleClick}
+            onClick={updateImages}
             type="button"
           >
             更新
