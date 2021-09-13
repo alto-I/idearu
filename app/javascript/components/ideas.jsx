@@ -41,7 +41,6 @@ const Ideas = () => {
   }
 
   const ideaSortLikes = () => {
-    console.log('実行されてる？')
     const likesIdeaList = state.ideasList.sort((a, b) => {
       if (a.likes > b.likes) {
         return -1
@@ -102,8 +101,8 @@ const Ideas = () => {
   }
 
   return (
-    <div className="ideas-container">
-      <div className="container button-container m-1">
+    <div className="container ideas-container">
+      <div className="button-container">
         <div className="buttons has-addons">
           <button
             className={
@@ -130,11 +129,11 @@ const Ideas = () => {
             type="button"
             onClick={ideaSortLatestComments}
           >
-            コメント順
+            最新コメント順
           </button>
         </div>
       </div>
-      <div className="container button-container m-1">
+      <div className="button-container">
         <div className="buttons has-addons">
           <button
             className={solved ? 'button' : 'button is-success is-selected'}
