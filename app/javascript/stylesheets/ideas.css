@@ -29,3 +29,18 @@
 .box:not(:last-child) {
   margin-bottom: 0rem;
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.25rem;
+  margin-bottom: -.25rem;
+}
+
+.buttons:not(:first-child) {
+  margin-bottom: 0rem;
+}
+
+.buttons:not(:last-child) {
+  margin-bottom: 0rem;
+}

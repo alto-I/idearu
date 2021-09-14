@@ -101,9 +101,9 @@ const Ideas = () => {
   }
 
   return (
-    <div className="container ideas-container">
+    <div className="ideas-container">
       <div className="button-container">
-        <div className="buttons has-addons">
+        <div className="buttons has-addons m-1">
           <button
             className={
               sort === 'created' ? 'button is-success is-selected' : 'button'
@@ -132,8 +132,6 @@ const Ideas = () => {
             最新コメント順
           </button>
         </div>
-      </div>
-      <div className="button-container">
         <div className="buttons has-addons">
           <button
             className={solved ? 'button' : 'button is-success is-selected'}
