@@ -101,7 +101,7 @@ const Ideas = () => {
   }
 
   return (
-    <div className="ideas-container">
+    <div className="ideas-container container">
       <div className="button-container">
         <div className="buttons has-addons m-1">
           <button
