@@ -1,23 +1,24 @@
-nav.navbar.is-success role="navigation" aria-label="main navigation"
-  div.navbar-brand
-    a.navbar-item href="/"
-      img src="/assets/title.png" alt="title"
-  div.navbar-menu
-    div.navbar-end
-      div.navbar-item
-        - if user_signed_in?
-          div.buttons
-            div.button.is-light.is-small
-              strong
-                = link_to('新規投稿', new_idea_path)
-            div.button.is-light.is-small
-              strong
-                = link_to('マイページ', user_path(current_user))
-            div.button.is-light.is-small
-              strong
-                = link_to('ログアウト', destroy_user_session_path, method: :delete)
-        - else
-          div.buttons
-            div.button.is-light.is-small
-              strong
-                = link_to('ログイン', new_user_session_path)
+div.header-container
+  nav.navbar role="navigation" aria-label="main navigation"
+    div.navbar-brand
+      a.navbar-item href="/"
+        img src="/assets/title.png" alt="title"
+    div.navbar-menu
+      div.navbar-end
+        div.navbar-item
+          - if user_signed_in?
+            div.buttons
+              div.button.is-light.is-small
+                strong
+                  = link_to('新規投稿', new_idea_path)
+              div.button.is-light.is-small
+                strong
+                  = link_to('マイページ', user_path(current_user))
+              div.button.is-light.is-small
+                strong
+                  = link_to('ログアウト', destroy_user_session_path,  method: :delete)
+          - else
+            div.buttons
+              div.button.is-light.is-small
+                strong
+                  = link_to('ログイン', new_user_session_path)
