@@ -1,6 +1,28 @@
 import React, { Fragment, useState } from 'react'
+import axios from 'axios'
+
+axios.defaults.headers['X-CSRF-TOKEN'] = document
+  .querySelector('meta[name="csrf-token"]')
+  .getAttribute('content')
 
 const IdeasNew = () => {
+  const [text, setText] = useState('')
+
+  const handleChange = (e) => {
+    setText(() => e.target.value)
+  }
+
+  const postIdea = () => {
+    axios
+      .post('/ideas', {
+        title: 'タイトル',
+        elevatorpitch: 'エレベーターピッチ',
+      })
+      .then((response) => {
+        console.log(response)
+      })
+  }
+
   const [formValues, setFormValues] = useState({
     problem: '解決したい問題',
     target: 'ターゲット',
@@ -38,12 +60,15 @@ const IdeasNew = () => {
 
   return (
     <>
+      <p>text : {text}</p>
+      <input value={text} onChange={handleChange} type="text" />
+      <button onClick={() => alert(text)}>値の確認</button>
       <div className="columns">
         <div className="title column">新規投稿イメージ</div>
         <div className="column">
           <button
             className="button is-info m-1"
-            onClick={updateImages}
+            onClick={postIdea}
             type="button"
           >
             更新
