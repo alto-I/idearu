@@ -14,12 +14,13 @@ const IdeasNew = () => {
 
   const postIdea = () => {
     axios
-      .post('/ideas', {
+      .post('/api/v1/ideas', {
         title: 'タイトル',
         elevatorpitch: 'エレベーターピッチ',
       })
       .then((response) => {
         console.log(response)
+        window.location.href = `/ideas/${response.data.idea.id}`
       })
   }
 
