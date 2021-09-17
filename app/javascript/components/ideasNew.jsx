@@ -17,37 +17,12 @@ const IdeasNew = () => {
   })
 
   const postIdea = () => {
-    const problem = document.getElementById('problem').value || '解決したい問題'
-    const target = document.getElementById('target').value || 'ターゲット'
-    const service = document.getElementById('service').value || 'サービス名'
-    const category = document.getElementById('category').value || 'カテゴリー'
-    const appealPoint =
-      document.getElementById('appealPoint').value ||
-      'アピールポイント、主要機能'
-    const competitiveService =
-      document.getElementById('competitiveServices').value || '競合サービス'
-    const differentiationFactor =
-      document.getElementById('differentiationFactor').value || '差別化要素'
+    const title = formValues.service
+    const elevatorpitch = `${formValues.service}というサービスは、${formValues.problem}という問題を解決したい${formValues.target}向けの、${formValues.category}です。ユーザーは${formValues.appealPoint}ができ、${formValues.competitiveService}とは違って、${formValues.differentiationFactor}事が特徴です。`
 
-    setFormValues({
-      ...formValues,
-      problem,
-      target,
-      service,
-      category,
-      appealPoint,
-      competitiveService,
-      differentiationFactor,
+    axios.post('/api/v1/ideas', { title, elevatorpitch }).then((response) => {
+      window.location.href = `/ideas/${response.data.idea.id}`
     })
-
-    axios
-      .post('/api/v1/ideas', {
-        title: service,
-        elevatorpitch: `${service}というサービスは、${problem}という問題を解決したい${target}向けの、${category}です。ユーザーは${appealPoint}ができ、${competitiveService}とは違って、${differentiationFactor}事が特徴です。`,
-      })
-      .then((response) => {
-        window.location.href = `/ideas/${response.data.idea.id}`
-      })
   }
 
   return (
