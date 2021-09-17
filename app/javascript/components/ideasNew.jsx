@@ -6,24 +6,6 @@ axios.defaults.headers['X-CSRF-TOKEN'] = document
   .getAttribute('content')
 
 const IdeasNew = () => {
-  const [text, setText] = useState('')
-
-  const handleChange = (e) => {
-    setText(() => e.target.value)
-  }
-
-  const postIdea = () => {
-    axios
-      .post('/api/v1/ideas', {
-        title: 'タイトル',
-        elevatorpitch: 'エレベーターピッチ',
-      })
-      .then((response) => {
-        console.log(response)
-        window.location.href = `/ideas/${response.data.idea.id}`
-      })
-  }
-
   const [formValues, setFormValues] = useState({
     problem: '解決したい問題',
     target: 'ターゲット',
@@ -33,19 +15,24 @@ const IdeasNew = () => {
     competitiveService: '競合サービス',
     differentiationFactor: '差別化要素',
   })
+  const [text, setText] = useState('')
 
-  const updateImages = () => {
+  const handleChange = (e) => {
+    setText(() => e.target.value)
+  }
+
+  const postIdea = () => {
     const problem = document.getElementById('problem').value || '解決したい問題'
     const target = document.getElementById('target').value || 'ターゲット'
     const service = document.getElementById('service').value || 'サービス名'
     const category = document.getElementById('category').value || 'カテゴリー'
     const appealPoint =
-      document.getElementById('appeal_point').value ||
+      document.getElementById('appealPoint').value ||
       'アピールポイント、主要機能'
     const competitiveService =
-      document.getElementById('competitive_services').value || '競合サービス'
+      document.getElementById('competitiveServices').value || '競合サービス'
     const differentiationFactor =
-      document.getElementById('differentiation_factor').value || '差別化要素'
+      document.getElementById('differentiationFactor').value || '差別化要素'
 
     setFormValues({
       ...formValues,
@@ -57,6 +44,15 @@ const IdeasNew = () => {
       competitiveService,
       differentiationFactor,
     })
+
+    axios
+      .post('/api/v1/ideas', {
+        title: service,
+        elevatorpitch: `${service}というサービスは、${problem}という問題を解決したい${target}向けの、${category}です。ユーザーは${appealPoint}ができ、${competitiveService}とは違って、${differentiationFactor}事が特徴です。`,
+      })
+      .then((response) => {
+        window.location.href = `/ideas/${response.data.idea.id}`
+      })
   }
 
   return (
@@ -67,67 +63,67 @@ const IdeasNew = () => {
       <div className="columns">
         <div className="form-container column">
           質問に対する回答を入力して下さい。
-          <form action="/api/ideas">
-            <label htmlFor="problem">
-              1.解決したい問題は？
-              <br />
-              <input size="40" type="text" name="proble" id="problem" />
-            </label>
+          <br />
+          <label htmlFor="problem">
+            1.解決したい問題は？
             <br />
-            <label htmlFor="target">
-              2.このサービスを使うターゲットは？
-              <br />
-              <input size="40" type="text" name="proble" id="target" />
-            </label>
+            <input size="40" type="text" name="problem" id="problem" />
+          </label>
+          <br />
+          <label htmlFor="target">
+            2.このサービスを使うターゲットは？
             <br />
-            <label htmlFor="service">
-              3.サービス名は？（任意）
-              <br />
-              <input size="30" type="text" name="proble" id="service" />
-            </label>
+            <input size="40" type="text" name="target" id="target" />
+          </label>
+          <br />
+          <label htmlFor="service">
+            3.サービス名は？（任意）
             <br />
-            <label htmlFor="category">
-              4.このサービスのカテゴリーは？
-              <br />
-              <input size="40" type="text" name="proble" id="category" />
-            </label>
+            <input size="30" type="text" name="service" id="service" />
+          </label>
+          <br />
+          <label htmlFor="category">
+            4.このサービスのカテゴリーは？
             <br />
-            <label htmlFor="appeal_point">
-              5.このサービスのアピールポイント、主要機能は？
-              <br />
-              <input size="60" type="text" name="proble" id="appeal_point" />
-            </label>
+            <input size="40" type="text" name="category" id="category" />
+          </label>
+          <br />
+          <label htmlFor="appealPoint">
+            5.このサービスのアピールポイント、主要機能は？
             <br />
-            <label htmlFor="competitive_services">
-              6.競合サービスは？
-              <br />
-              <input
-                size="30"
-                type="text"
-                name="proble"
-                id="competitive_services"
-              />
-            </label>
-            <br />
-            <label htmlFor="differentiation_factor">
-              7.競合サービスとの差別化要素は？
-              <br />
-              <input
-                size="60"
-                type="text"
-                name="proble"
-                id="differentiation_factor"
-              />
-            </label>
-            <br />
+            <input size="60" type="text" name="appealPoint" id="appealPoint" />
+          </label>
+          <br />
+          <label htmlFor="competitiveServices">
+            6.競合サービスは？
             <br />
             <input
-              className="button is-success"
-              type="submit"
-              value="投稿"
-              onClick={postIdea}
+              size="30"
+              type="text"
+              name="competitiveServices"
+              id="competitiveServices"
             />
-          </form>
+          </label>
+          <br />
+          <label htmlFor="differentiationFactor">
+            7.競合サービスとの差別化要素は？
+            <br />
+            <input
+              size="60"
+              type="text"
+              name="differentiationFactor"
+              id="differentiationFactor"
+            />
+          </label>
+          <br />
+          <br />
+          <button
+            className="button is-success"
+            type="button"
+            onClick={postIdea}
+          >
+            投稿
+          </button>
         </div>
         <div className="image-container column">
           <div className="title">新規投稿イメージ</div>
