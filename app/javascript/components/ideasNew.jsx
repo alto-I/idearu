@@ -65,38 +65,94 @@ const IdeasNew = () => {
       <input value={text} onChange={handleChange} type="text" />
       <button onClick={() => alert(text)}>値の確認</button>
       <div className="columns">
-        <div className="title column">新規投稿イメージ</div>
-        <div className="column">
-          <button
-            className="button is-info m-1"
-            onClick={postIdea}
-            type="button"
-          >
-            更新
-          </button>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="ideas-container card">
-          <div className="card-header">
-            <div className="card-header-title is-size-4">
-              [{formValues.problem}]<br />
-              という問題を解決したい
-            </div>
-          </div>
-          <div className="elevatorpitch-container card-content">
-            [{formValues.service}]というサービスは、
-            <br />[{formValues.problem}
-            ]という問題を解決したい
-            <br /> [{formValues.target}]向けの、
-            <br />[{formValues.category}]です。
+        <div className="form-container column">
+          質問に対する回答を入力して下さい。
+          <form action="/api/ideas">
+            <label htmlFor="problem">
+              1.解決したい問題は？
+              <br />
+              <input size="40" type="text" name="proble" id="problem" />
+            </label>
             <br />
-            ユーザーは[
-            {formValues.appealPoint}
-            ]ができ
-            <br />[{formValues.competitiveService}]とは違って、
-            <br />[{formValues.differentiationFactor}]事が特徴です。
+            <label htmlFor="target">
+              2.このサービスを使うターゲットは？
+              <br />
+              <input size="40" type="text" name="proble" id="target" />
+            </label>
+            <br />
+            <label htmlFor="service">
+              3.サービス名は？（任意）
+              <br />
+              <input size="30" type="text" name="proble" id="service" />
+            </label>
+            <br />
+            <label htmlFor="category">
+              4.このサービスのカテゴリーは？
+              <br />
+              <input size="40" type="text" name="proble" id="category" />
+            </label>
+            <br />
+            <label htmlFor="appeal_point">
+              5.このサービスのアピールポイント、主要機能は？
+              <br />
+              <input size="60" type="text" name="proble" id="appeal_point" />
+            </label>
+            <br />
+            <label htmlFor="competitive_services">
+              6.競合サービスは？
+              <br />
+              <input
+                size="30"
+                type="text"
+                name="proble"
+                id="competitive_services"
+              />
+            </label>
+            <br />
+            <label htmlFor="differentiation_factor">
+              7.競合サービスとの差別化要素は？
+              <br />
+              <input
+                size="60"
+                type="text"
+                name="proble"
+                id="differentiation_factor"
+              />
+            </label>
+            <br />
+            <br />
+            <input
+              className="button is-success"
+              type="submit"
+              value="投稿"
+              onClick={postIdea}
+            />
+          </form>
+        </div>
+        <div className="image-container column">
+          <div className="title">新規投稿イメージ</div>
+          <div className="container">
+            <div className="ideas-container card">
+              <div className="card-header">
+                <div className="card-header-title is-size-4">
+                  [{formValues.problem}]<br />
+                  という問題を解決したい
+                </div>
+              </div>
+              <div className="elevatorpitch-container card-content">
+                [{formValues.service}]というサービスは、
+                <br />[{formValues.problem}
+                ]という問題を解決したい
+                <br /> [{formValues.target}]向けの、
+                <br />[{formValues.category}]です。
+                <br />
+                ユーザーは[
+                {formValues.appealPoint}
+                ]ができ
+                <br />[{formValues.competitiveService}]とは違って、
+                <br />[{formValues.differentiationFactor}]事が特徴です。
+              </div>
+            </div>
           </div>
         </div>
       </div>
