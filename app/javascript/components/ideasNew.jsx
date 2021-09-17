@@ -15,11 +15,6 @@ const IdeasNew = () => {
     competitiveService: '競合サービス',
     differentiationFactor: '差別化要素',
   })
-  const [text, setText] = useState('')
-
-  const handleChange = (e) => {
-    setText(() => e.target.value)
-  }
 
   const postIdea = () => {
     const problem = document.getElementById('problem').value || '解決したい問題'
@@ -57,9 +52,6 @@ const IdeasNew = () => {
 
   return (
     <>
-      <p>text : {text}</p>
-      <input value={text} onChange={handleChange} type="text" />
-      <button onClick={() => alert(text)}>値の確認</button>
       <div className="columns">
         <div className="form-container column">
           質問に対する回答を入力して下さい。
@@ -67,31 +59,71 @@ const IdeasNew = () => {
           <label htmlFor="problem">
             1.解決したい問題は？
             <br />
-            <input size="40" type="text" name="problem" id="problem" />
+            <input
+              size="40"
+              type="text"
+              name="problem"
+              id="problem"
+              onChange={(e) =>
+                setFormValues({ ...formValues, problem: e.target.value })
+              }
+            />
           </label>
           <br />
           <label htmlFor="target">
             2.このサービスを使うターゲットは？
             <br />
-            <input size="40" type="text" name="target" id="target" />
+            <input
+              size="40"
+              type="text"
+              name="target"
+              id="target"
+              onChange={(e) =>
+                setFormValues({ ...formValues, target: e.target.value })
+              }
+            />
           </label>
           <br />
           <label htmlFor="service">
             3.サービス名は？（任意）
             <br />
-            <input size="30" type="text" name="service" id="service" />
+            <input
+              size="30"
+              type="text"
+              name="service"
+              id="service"
+              onChange={(e) =>
+                setFormValues({ ...formValues, service: e.target.value })
+              }
+            />
           </label>
           <br />
           <label htmlFor="category">
             4.このサービスのカテゴリーは？
             <br />
-            <input size="40" type="text" name="category" id="category" />
+            <input
+              size="40"
+              type="text"
+              name="category"
+              id="category"
+              onChange={(e) =>
+                setFormValues({ ...formValues, category: e.target.value })
+              }
+            />
           </label>
           <br />
           <label htmlFor="appealPoint">
             5.このサービスのアピールポイント、主要機能は？
             <br />
-            <input size="60" type="text" name="appealPoint" id="appealPoint" />
+            <input
+              size="60"
+              type="text"
+              name="appealPoint"
+              id="appealPoint"
+              onChange={(e) =>
+                setFormValues({ ...formValues, appealPoint: e.target.value })
+              }
+            />
           </label>
           <br />
           <label htmlFor="competitiveServices">
@@ -102,6 +134,12 @@ const IdeasNew = () => {
               type="text"
               name="competitiveServices"
               id="competitiveServices"
+              onChange={(e) =>
+                setFormValues({
+                  ...formValues,
+                  competitiveService: e.target.value,
+                })
+              }
             />
           </label>
           <br />
@@ -113,6 +151,12 @@ const IdeasNew = () => {
               type="text"
               name="differentiationFactor"
               id="differentiationFactor"
+              onChange={(e) =>
+                setFormValues({
+                  ...formValues,
+                  differentiationFactor: e.target.value,
+                })
+              }
             />
           </label>
           <br />
