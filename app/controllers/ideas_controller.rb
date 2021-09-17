@@ -2,7 +2,8 @@
 
 class IdeasController < ApplicationController
   before_action :set_idea, only: %i[show edit update destroy solved not_solved]
-  before_action :authenticate_user!, only: %i[new create edit update destroy solved not_solved]
+  before_action :authenticate_user!,
+                only: %i[new edit update destroy solved not_solved]
 
   def index
     @ideas = Idea.all
@@ -14,23 +15,6 @@ class IdeasController < ApplicationController
   end
 
   def new; end
-
-  def create
-    title = params[:problem]
-    elevatorpitch =
-      create_elevorpitch(
-        params[:service],
-        params[:problem],
-        params[:target],
-        params[:category],
-        params[:appeal_point],
-        params[:competitive_services],
-        params[:differentiation_factor],
-      )
-    @idea = current_user.ideas.new(title: title, elevatorpitch: elevatorpitch)
-    @idea.save
-    redirect_to idea_path(id: @idea.id)
-  end
 
   def edit; end
 
@@ -63,18 +47,6 @@ class IdeasController < ApplicationController
 
   def set_idea
     @idea = Idea.find(params[:id])
-  end
-
-  def create_elevorpitch(
-    service,
-    problem,
-    target,
-    category,
-    appeal_point,
-    competitive_services,
-    differentiation_factor
-  )
-    "#{service}というサービスは、#{problem}という問題を解決したい#{target}向けの、#{category}です。ユーザーは#{appeal_point}ができ、#{competitive_services}とは違って、#{differentiation_factor}事が特徴です。"
   end
 
   def idea_params
