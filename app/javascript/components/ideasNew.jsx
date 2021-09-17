@@ -18,7 +18,7 @@ const IdeasNew = () => {
   const [formValues, setFormValues] = useState({
     problem: '解決したい問題',
     target: 'ターゲット',
-    service: 'サービス名',
+    service: 'サービス名（未定）',
     category: 'カテゴリー',
     appealPoint: 'アピールポイント、主要機能',
     competitiveService: '競合サービス',
@@ -26,7 +26,7 @@ const IdeasNew = () => {
   })
 
   const postIdea = () => {
-    const title = formValues.service
+    const title = formValues.problem
     const elevatorpitch = `${formValues.service}というサービスは、${formValues.problem}という問題を解決したい${formValues.target}向けの、${formValues.category}です。ユーザーは${formValues.appealPoint}ができ、${formValues.competitiveService}とは違って、${formValues.differentiationFactor}事が特徴です。`
 
     axios.post('/api/v1/ideas', { title, elevatorpitch }).then((response) => {
