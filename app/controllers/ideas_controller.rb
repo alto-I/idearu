@@ -49,18 +49,6 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params[:id])
   end
 
-  def create_elevorpitch(
-    service,
-    problem,
-    target,
-    category,
-    appeal_point,
-    competitive_services,
-    differentiation_factor
-  )
-    "#{service}というサービスは、#{problem}という問題を解決したい#{target}向けの、#{category}です。ユーザーは#{appeal_point}ができ、#{competitive_services}とは違って、#{differentiation_factor}事が特徴です。"
-  end
-
   def idea_params
     params.require(:idea).permit(:title, :elevatorpitch)
   end

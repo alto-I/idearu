@@ -52,6 +52,7 @@ const IdeasNew = () => {
 
   return (
     <>
+      <div className="container title">アイデアを投稿する</div>
       <div className="columns">
         <div className="form-container column">
           質問に対する回答を入力して下さい。
