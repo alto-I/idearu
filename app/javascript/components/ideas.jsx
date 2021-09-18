@@ -101,7 +101,7 @@ const Ideas = () => {
   }
 
   return (
-    <div className="ideas-container container">
+    <div className="ideas-container">
       <div className="button-container">
         <div className="buttons has-addons m-1">
           <button
@@ -153,27 +153,22 @@ const Ideas = () => {
         <>ロード中</>
       ) : (
         state.ideasList.map((idea) => (
-          <div className="box m-1" key={idea.id}>
-            <div className="idea-container columns">
-              <div className="icons column is-1">
-                <div className="icons-item is-size-5">
-                  {idea.likes} <FaRegHeart />
-                </div>
-                <div className="icons-item is-size-5">
-                  {idea.comments} <FaComment />
-                </div>
+          <div className="ideas-wrapper" key={idea.id}>
+            <div className="ideas-caption">
+              <div>
+                {idea.likes} <FaRegHeart />
               </div>
-              <div className="idea column is-narrow">
-                <div className="is-size-5">
-                  <a href={`ideas/${idea.id}`}>{idea.title}</a>
-                  という問題を解決したい
-                </div>
-                <div className="user-container columns is-size-5">
-                  <div className="idea column is-1 mr-1">
-                    <FaUserCircle />
-                  </div>
-                  <div className="column is-size-5">{idea.userName}</div>
-                </div>
+              <div>
+                {idea.comments} <FaComment />
+              </div>
+            </div>
+            <div className="ideas-details">
+              <div>
+                <a href={`ideas/${idea.id}`}>{idea.title}</a>
+                という問題を解決したい
+              </div>
+              <div className="user-container is-size-5">
+                投稿者:{idea.userName}
               </div>
             </div>
           </div>
