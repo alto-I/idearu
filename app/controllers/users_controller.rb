@@ -11,8 +11,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
-  def comment_params
-    params.require(:comment).permit(:content, :idea_id)
-  end
 end
