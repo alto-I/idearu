@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useReducer, useState } from 'react'
 import '../stylesheets/ideas.css'
+import DayJS from 'react-dayjs'
 
-import { FaRegHeart, FaComment, FaUserCircle, FaPlus } from 'react-icons/fa'
+import { FaRegHeart, FaComment, FaPlus, FaAngleDown } from 'react-icons/fa'
 import fetchIdeas from '../apis/ideas'
 import { REQUEST_STATE } from '../constants'
 
@@ -11,6 +15,7 @@ const Ideas = () => {
   const [state, dispatch] = useReducer(ideasReducer, initialState)
   const [solved, setSolved] = useState(false)
   const [sort, setSort] = useState('created')
+  const [dropDownIsActive, setDropDownIsActive] = useState(false)
 
   useEffect(() => {
     dispatch({ type: ideasActionTypes.FETCHING })
@@ -23,6 +28,14 @@ const Ideas = () => {
       })
     )
   }, [])
+
+  const switchDropDownIsActive = () => {
+    if (dropDownIsActive) {
+      setDropDownIsActive(false)
+    } else {
+      setDropDownIsActive(true)
+    }
+  }
 
   const ideaSortCreated = () => {
     const createdIdeaList = state.ideasList.sort((a, b) => {
@@ -38,6 +51,7 @@ const Ideas = () => {
       },
     })
     setSort('created')
+    switchDropDownIsActive()
   }
 
   const ideaSortLikes = () => {
@@ -54,6 +68,7 @@ const Ideas = () => {
       },
     })
     setSort('likes')
+    switchDropDownIsActive()
   }
 
   const ideaSortLatestComments = () => {
@@ -70,6 +85,7 @@ const Ideas = () => {
       },
     })
     setSort('comments')
+    switchDropDownIsActive()
   }
 
   const fetchIdeaSolved = () => {
@@ -101,47 +117,78 @@ const Ideas = () => {
   }
 
   return (
-    <div className="ideas-container container">
+    <div className="ideas-container">
       <div className="button-container">
+        <div
+          className={
+            dropDownIsActive ? 'dropdown is-active m-1' : 'dropdown m-1'
+          }
+        >
+          <div className="dropdown-trigger">
+            <button
+              className="button is-small"
+              type="button"
+              aria-haspopup
+              aria-controls="dropdown-menu"
+              onClick={switchDropDownIsActive}
+            >
+              <span>ソート</span>
+              <span className="icon is-small">
+                <FaAngleDown />
+              </span>
+            </button>
+          </div>
+          <div className="dropdown-menu" id="dropdown-menu" role="menu">
+            <div className="dropdown-content">
+              <a
+                className={
+                  sort === 'created'
+                    ? 'dropdown-item is-active'
+                    : 'dropdown-item'
+                }
+                onClick={ideaSortCreated}
+              >
+                新着順
+              </a>
+              <a
+                className={
+                  sort === 'likes' ? 'dropdown-item is-active' : 'dropdown-item'
+                }
+                onClick={ideaSortLikes}
+              >
+                欲しい！順
+              </a>
+              <a
+                className={
+                  sort === 'comments'
+                    ? 'dropdown-item is-active'
+                    : 'dropdown-item'
+                }
+                onClick={ideaSortLatestComments}
+              >
+                最新コメント順
+              </a>
+            </div>
+          </div>
+        </div>
         <div className="buttons has-addons m-1">
           <button
             className={
-              sort === 'created' ? 'button is-success is-selected' : 'button'
+              solved
+                ? 'button is-small'
+                : 'button is-small is-success is-selected'
             }
-            type="button"
-            onClick={ideaSortCreated}
-          >
-            新着順
-          </button>
-          <button
-            className={
-              sort === 'likes' ? 'button is-success is-selected' : 'button'
-            }
-            type="button"
-            onClick={ideaSortLikes}
-          >
-            欲しい！順
-          </button>
-          <button
-            className={
-              sort === 'comments' ? 'button is-success is-selected' : 'button'
-            }
-            type="button"
-            onClick={ideaSortLatestComments}
-          >
-            最新コメント順
-          </button>
-        </div>
-        <div className="buttons has-addons">
-          <button
-            className={solved ? 'button' : 'button is-success is-selected'}
             type="button"
             onClick={fetchIdeaNotSolved}
           >
             未解決
           </button>
           <button
-            className={solved ? 'button is-danger is-selected' : 'button'}
+            className={
+              solved
+                ? 'button is-small is-danger is-selected'
+                : 'button is-small'
+            }
             type="button"
             onClick={fetchIdeaSolved}
           >
@@ -153,36 +200,33 @@ const Ideas = () => {
         <>ロード中</>
       ) : (
         state.ideasList.map((idea) => (
-          <div className="box m-1" key={idea.id}>
-            <div className="idea-container columns">
-              <div className="icons column is-1">
-                <div className="icons-item is-size-5">
-                  {idea.likes} <FaRegHeart />
-                </div>
-                <div className="icons-item is-size-5">
-                  {idea.comments} <FaComment />
-                </div>
+          <div className="ideas-wrapper" key={idea.id}>
+            <div className="ideas-caption">
+              <div className="ideas-likes">
+                {idea.likes} <FaRegHeart />
               </div>
-              <div className="idea column is-narrow">
-                <div className="is-size-5">
-                  <a href={`ideas/${idea.id}`}>{idea.title}</a>
-                  という問題を解決したい
+              <div className="ideas-comments">
+                {idea.comments} <FaComment />
+              </div>
+            </div>
+            <div className="ideas-details">
+              <div className="ideas-title">
+                <a href={`ideas/${idea.id}`}>{idea.title}</a>
+                <br />
+                という問題を解決したい
+              </div>
+              <div className="ideas-info is-size-7">
+                <div className="ideas-posttime">
+                  投稿日時:
+                  <DayJS format="YYYY年MM月DD日">{idea.createdAt}</DayJS>
                 </div>
-                <div className="user-container columns is-size-5">
-                  <div className="idea column is-1 mr-1">
-                    <FaUserCircle />
-                  </div>
-                  <div className="column is-size-5">{idea.userName}</div>
-                </div>
+                <div className="ideas-author">投稿者:{idea.userName}</div>
               </div>
             </div>
           </div>
         ))
       )}
-      <a
-        href="/ideas/new"
-        className="new-idea-button-container is-hidden-desktop"
-      >
+      <a href="/ideas/new" className="new-idea-button-link is-hidden-desktop">
         <div className="new-idea-button">
           <FaPlus />
         </div>
