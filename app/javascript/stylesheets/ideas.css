@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.dropdown-menu {
+  margin-top: -.75rem;
+}
+
 .ideas-wrapper {
   border-top: 1px solid #E4E6E8;
   display: flex;
@@ -24,7 +28,7 @@
 }
 
 .ideas-posttime {
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .columns:last-child {
