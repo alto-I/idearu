@@ -217,10 +217,13 @@ const Ideas = () => {
               </div>
               <div className="ideas-info is-size-7">
                 <div className="ideas-posttime">
-                  投稿日時:
+                  <p>投稿日時:</p>
                   <DayJS format="YYYY年MM月DD日">{idea.createdAt}</DayJS>
                 </div>
-                <div className="ideas-author">投稿者:{idea.userName}</div>
+                <div className="ideas-author">
+                  <p>投稿者:</p>
+                  {idea.userName}
+                </div>
               </div>
             </div>
           </div>

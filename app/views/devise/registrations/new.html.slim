@@ -3,17 +3,24 @@ h2
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
+    = f.label :ユーザーネーム
+    br
+    = f.text_field :name, , autofocus: true
+  .field
     = f.label :email
-  = f.email_field :email, autofocus: true, autocomplete: "email"
+    br
+    = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
     = f.label :password
     - if @minimum_password_length
       em
         = t('devise.shared.minimum_password_length', count: @minimum_password_length)
-  = f.password_field :password, autocomplete: "new-password"
+    br
+    = f.password_field :password, autocomplete: "new-password"
   .field
     = f.label :password_confirmation
-  = f.password_field :password_confirmation, autocomplete: "new-password"
+    br
+    = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
     = f.submit t('.sign_up')
 = render "devise/shared/links"
