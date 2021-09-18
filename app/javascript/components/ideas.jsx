@@ -1,7 +1,8 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import '../stylesheets/ideas.css'
+import DayJS from 'react-dayjs'
 
-import { FaRegHeart, FaComment, FaUserCircle, FaPlus } from 'react-icons/fa'
+import { FaRegHeart, FaComment, FaPlus } from 'react-icons/fa'
 import fetchIdeas from '../apis/ideas'
 import { REQUEST_STATE } from '../constants'
 
@@ -163,12 +164,17 @@ const Ideas = () => {
               </div>
             </div>
             <div className="ideas-details">
-              <div>
+              <div className="ideas-title">
                 <a href={`ideas/${idea.id}`}>{idea.title}</a>
+                <br />
                 という問題を解決したい
               </div>
-              <div className="user-container is-size-5">
-                投稿者:{idea.userName}
+              <div className="ideas-info">
+                <div className="ideas-posttime is-size-7">
+                  投稿日時:
+                  <DayJS format="YYYY年MM月DD日">{idea.createdAt}</DayJS>
+                </div>
+                <div className="author is-size-7">投稿者:{idea.userName}</div>
               </div>
             </div>
           </div>

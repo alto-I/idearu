@@ -15,7 +15,16 @@
 }
 
 .ideas-details {
+  padding: 10px;
   flex: 1;
+}
+
+.ideas-info {
+  display: flex;
+}
+
+.ideas-posttime {
+  margin-right: 10px;
 }
 
 .columns:last-child {
