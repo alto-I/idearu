@@ -156,10 +156,10 @@ const Ideas = () => {
         state.ideasList.map((idea) => (
           <div className="ideas-wrapper" key={idea.id}>
             <div className="ideas-caption">
-              <div>
+              <div className="ideas-likes">
                 {idea.likes} <FaRegHeart />
               </div>
-              <div>
+              <div className="ideas-comments">
                 {idea.comments} <FaComment />
               </div>
             </div>
@@ -169,21 +169,18 @@ const Ideas = () => {
                 <br />
                 という問題を解決したい
               </div>
-              <div className="ideas-info">
-                <div className="ideas-posttime is-size-7">
+              <div className="ideas-info is-size-7">
+                <div className="ideas-posttime">
                   投稿日時:
                   <DayJS format="YYYY年MM月DD日">{idea.createdAt}</DayJS>
                 </div>
-                <div className="author is-size-7">投稿者:{idea.userName}</div>
+                <div className="ideas-author">投稿者:{idea.userName}</div>
               </div>
             </div>
           </div>
         ))
       )}
-      <a
-        href="/ideas/new"
-        className="new-idea-button-container is-hidden-desktop"
-      >
+      <a href="/ideas/new" className="new-idea-button-link is-hidden-desktop">
         <div className="new-idea-button">
           <FaPlus />
         </div>
