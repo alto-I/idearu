@@ -132,7 +132,7 @@ const Ideas = () => {
               aria-controls="dropdown-menu"
               onClick={switchDropDownIsActive}
             >
-              <span>ソート</span>
+              <span>表示順</span>
               <span className="icon is-small">
                 <FaAngleDown />
               </span>
