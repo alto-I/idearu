@@ -17,7 +17,7 @@ const Header = (props) => {
 
   return (
     <nav
-      className="navbar islight"
+      className="navbar is-light"
       role="navigation"
       aria-label="main navigation"
     >
