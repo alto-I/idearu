@@ -1,1 +1,4 @@
-= react_component('header', isUserSignedIn: user_signed_in?, currentUserId: current_user.id )
+- if user_signed_in?
+  = react_component('header', isUserSignedIn: user_signed_in?, currentUserId: current_user.id )
+- else
+  = react_component('header', isUserSignedIn: user_signed_in?)
