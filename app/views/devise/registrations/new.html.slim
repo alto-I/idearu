@@ -5,6 +5,7 @@ section.hero
       .columns.is-centered
         .column.is-5-tablet.is-4-desktop.is-3-widescreen
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "box" }) do |f|
+            = render "devise/shared/error_messages", resource: resource
             .field
               = f.label :user, class: "label"
               .control

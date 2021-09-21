@@ -26,6 +26,8 @@ ja:
         unlock_token: ロック解除用トークン
         updated_at: 更新日
         user: ユーザー名
+        new_password: 新しいパスワード
+        new_password_confirmation: 新しいパスワード（確認用）
     models:
       user: ユーザー
   devise:

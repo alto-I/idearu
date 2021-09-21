@@ -1,46 +1,38 @@
-h2
-  = t('.title', resource: resource.model_name.human)
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :ユーザーネーム
-    br
-    = f.text_field :name, autofocus: true
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
-  .field
-    = f.label :password
-    i
-      | (
-      = t('.leave_blank_if_you_don_t_want_to_change_it')
-      | )
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  - if @minimum_password_length
-    em
-      = t('devise.shared.minimum_password_length', count: @minimum_password_length)
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    i
-      | (
-      = t('.we_need_your_current_password_to_confirm_your_changes')
-      | )
-    br
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit t('.update')
-h3
-  = t('.cancel_my_account')
-p
-  = t('.unhappy')
-  = button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete
-= link_to t('devise.shared.links.back'), :back
+section.hero
+  .hero-body
+    .title.has-text-centered
+      = t('.title', resource: resource.model_name.human)
+    .columns.is-centered
+      .column.is-5-tablet.is-4-desktop.is-3-widescreen
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "box" }) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .field
+            = f.label :user, class: "label"
+            .control
+              = f.text_field :name, autofocus: true, class: "input"
+          .field
+            = f.label :email, class: "label"
+            .control
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
+          - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              div
+                = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
+          .field
+            = f.label :password, class: "label"
+              = t('activerecord.attributes.user.new_password')
+              - if @minimum_password_length
+                = t('devise.shared.minimum_password_length', count: @minimum_password_length)
+            .control
+              = f.password_field :password, autocomplete: "new-password", class: "input"
+          .field
+            = f.label :new_password_confirmation, class: "label"
+            .control
+              = f.password_field :password_confirmation, autocomplete: "new-password", class: "input"
+          .field.mb-5
+            = f.label :current_password, '現在のパスワード（変更を保存する場合）', class: "label"
+            .control
+              = f.password_field :current_password, autocomplete: "current-password", class: "input"
+          .field.actions
+            = f.submit t('.update'), class: "button is-link is-fullwidth"
+    .has-text-centered
+      = button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "button is-danger is-small  is-inverted"
