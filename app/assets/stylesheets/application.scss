@@ -14,8 +14,9 @@
  *= require_self
  */
 
-$navbar-item-img-max-height: 2.0rem;
-@import "bulma";
+html, body {
+  height: 100%;
+}
 
 .columns {
   margin-left: 0rem;
@@ -23,4 +24,5 @@ $navbar-item-img-max-height: 2.0rem;
   margin-top: 0rem;
 }
 
-
+$navbar-item-img-max-height: 2.0rem;
+@import "bulma";
