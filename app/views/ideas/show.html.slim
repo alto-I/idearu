@@ -1,46 +1,59 @@
-div.container
-  div.idea-container.card
-    div.card-header
-      div.card-header-title.is-size-4
-        = @idea.title
-          | という問題したい
-    div.elevatorpitch-container.card-content
-      = @idea.elevatorpitch
-  p 解決済み？
-  = @idea.solved
-  br
-  - if user_signed_in? && current_user.admin?
-    - if @idea.solved
-      = link_to('未解決にする', "/ideas/#{params[:id]}/not_solved", method: :post)
-    - else
-      = link_to('解決済みにする', "/ideas/#{params[:id]}/solved", method: :post)
-  br
-  = @idea.user.name
+.idea-container.container.box.mt-3
+  .idea-title.pb-4.mt-5
+    .title.m-3.is-4
+      = @idea.title
+    p.has-text-right.mr-4
+      | という問題を解決したい
+    .user-container.columns
+      .column.mx-4.is-2.p-0
+        | 投稿者: 
+        = @idea.user.name
+      .ideas-posttime.column.mx-4.is-5.p-0
+        | 投稿日時: 
+        = l @idea.created_at
+  .elevatorpitch.pb-4.my-4.px-2
+    = @idea.elevatorpitch
   - if user_signed_in?
-    = react_component("like", ideaId: @idea.id, prerender: false)
-    if current_user.id == @idea.user.id
-      = link_to('編集', edit_idea_path(@idea))
-      = link_to('削除', @idea, method: :delete, data: { confirm: '本当に削除してよろしいですか?' })
-  div.comments-container
-    div.comment-title.has-text-weight-bold.my-2
-      | コメント
-    - @idea.comments.each do |comment|
-      div.comment-container.box.columns.m-1
-        div.user-container.column.is-1
-          div.user-icon
-            / <FaUserCircle />
-          div.user-name
+    .idea-items.columns.is-mobile.mx-0
+      .column.is-narrow
+        = react_component("like", ideaId: @idea.id, prerender: false)
+      .column.is-narrow
+        <i class="far fa-comment fa-fw fa-lg "></i>
+        = @idea.comments.length
+      - if user_signed_in? && current_user.id == @idea.user.id || current_user.admin
+        = link_to('編集', edit_idea_path(@idea) , class: "column is-narrow has-text-grey")
+        = link_to('削除', @idea, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "column has-text-danger is-narrow")
+  - if user_signed_in? && current_user.admin?
+    .switch-solved
+      - if @idea.solved
+        = link_to('未解決にする', "/ideas/#{params[:id]}/not_solved", method: :post, class: "button is-primary")
+      - else
+        = link_to('解決済みにする', "/ideas/#{params[:id]}/solved", method: :post, class: "button is-danger")
+
+.comments-container.container
+  .comment-title.has-text-weight-bold.my-2
+    | コメント
+  - @idea.comments.each do |comment|
+    .comment-container.card.media.p-4
+      .user-container.media-content
+        .comment__title.content.pb-2
+          .comment__user-name
             = comment.user.name
-        div.comment-description.column
+          .comment__createdat
+            = l comment.created_at
+            br
+        .comment-description.pb-5
           = comment.content
         - if user_signed_in? && comment.user_id == current_user.id
-          div.comment-destroy.column
-            = link_to('削除', idea_comment_path(@idea, comment), method: :delete)
+          .comment-destroy.pt-3.has-text-right
+            = link_to('削除', idea_comment_path(@idea, comment), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "has-text-danger")
   - if user_signed_in?
-    = form_with(model: [@idea, @comment]) do |form|
-      = form.text_area :content
-      = form.hidden_field :idea_id, value: @idea.id
-      = form.submit
+    = form_with(model: [@idea, @comment], class: "my-4") do |form|
+      .field
+        .control
+          = form.text_area :content, class: "textarea"
+          = form.hidden_field :idea_id, value: @idea.id
+      .field.actions
+        = form.submit "コメントする", class: "button is-info ml-3"
   - else
-    p コメントするにはログインが必要です。
-
+    p.has-text-centered.my-3 コメントするにはログインが必要です。

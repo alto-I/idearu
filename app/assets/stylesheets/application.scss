@@ -14,9 +14,16 @@
  *= require_self
  */
 
+$navbar-item-img-max-height: 2.0rem;
+$container-offset: 600px;
+@import "bulma";
+
 html, body {
   height: 100%;
 }
 
-$navbar-item-img-max-height: 2.0rem;
-@import "bulma";
+.columns {
+  margin-left: 0rem;
+  margin-right: 0rem;
+  margin-top: 0rem;
+}
