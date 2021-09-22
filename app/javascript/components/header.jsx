@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import '../stylesheets/header.scss'
 
 const Header = (props) => {
-  const { isUserSignedIn, currentUserId } = props
+  const { isUserSignedIn } = props
   const [isAcitve, setIsActive] = useState(false)
 
   const handleIsActiveChange = () => {
@@ -47,8 +47,8 @@ const Header = (props) => {
                 <a className="navbar-item" href="/ideas/new">
                   新規投稿
                 </a>
-                <a className="navbar-item" href={`/users/${currentUserId}`}>
-                  マイページ
+                <a className="navbar-item" href="/users/edit">
+                  登録情報変更
                 </a>
                 <a
                   className="navbar-item"
