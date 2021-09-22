@@ -1,0 +1,26 @@
+.idea-container {
+  box-sizing: border-box;
+}
+
+.idea-title {
+  border-bottom: 1px solid #E4E6E8;
+}
+
+.idea-items {
+  border-top: 1px solid #E4E6E8;
+  justify-content: flex-end;
+}
+
+.user-name {
+  border-bottom: 1px solid #E4E6E8;
+}
+
+.comment__title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #E4E6E8;
+}
+
+.comment-destroy {
+  border-top: 1px solid #E4E6E8;
+}

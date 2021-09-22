@@ -16,7 +16,13 @@ class IdeasController < ApplicationController
 
   def new; end
 
-  def edit; end
+  def edit
+    if @idea.user == current_user
+      render 'edit'
+    else
+      redirect_to root_path
+    end
+  end
 
   def update
     if @idea.update(idea_params)

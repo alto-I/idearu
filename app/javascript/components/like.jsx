@@ -1,7 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import axios from 'axios'
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
+import { IconContext } from 'react-icons'
 import fetchLike from '../apis/like'
+import '../stylesheets/likes.scss'
 
 axios.defaults.headers['X-CSRF-TOKEN'] = document
   .querySelector('meta[name="csrf-token"]')
@@ -34,16 +36,27 @@ const Like = (props) => {
 
   return (
     <>
-      {totalLike}
       {like.length ? (
-        <span className="likeButton" onClick={deleteLike}>
-          <AiFillHeart />
-        </span>
+        <IconContext.Provider value={{ size: '22px', color: 'orange' }}>
+          <span className="likeButton" onClick={deleteLike}>
+            <AiFillLike />
+          </span>
+        </IconContext.Provider>
       ) : (
-        <span className="likeButton" onClick={postLike}>
-          <AiOutlineHeart />
-        </span>
+        <IconContext.Provider value={{ size: '22px' }}>
+          <span className="likeButton" onClick={postLike}>
+            <AiOutlineLike />
+          </span>
+        </IconContext.Provider>
       )}
+      &nbsp;
+      <span
+        className={
+          like.length ? 'total-like-length liked' : 'total-like-length'
+        }
+      >
+        {totalLike}
+      </span>
     </>
   )
 }

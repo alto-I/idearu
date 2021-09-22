@@ -5,7 +5,8 @@ import React, { useEffect, useReducer, useState } from 'react'
 import '../stylesheets/ideas.css'
 import DayJS from 'react-dayjs'
 
-import { FaRegHeart, FaComment, FaPlus, FaAngleDown } from 'react-icons/fa'
+import { FaRegComment, FaPlus, FaAngleDown } from 'react-icons/fa'
+import { AiOutlineLike } from 'react-icons/ai'
 import fetchIdeas from '../apis/ideas'
 import { REQUEST_STATE } from '../constants'
 
@@ -203,10 +204,10 @@ const Ideas = () => {
           <div className="ideas-wrapper" key={idea.id}>
             <div className="ideas-caption">
               <div className="ideas-likes">
-                {idea.likes} <FaRegHeart />
+                {idea.likes} <AiOutlineLike />
               </div>
               <div className="ideas-comments">
-                {idea.comments} <FaComment />
+                {idea.comments} <FaRegComment />
               </div>
             </div>
             <div className="ideas-details">
