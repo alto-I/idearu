@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react'
 import axios from 'axios'
@@ -36,40 +37,46 @@ const IdeasNew = () => {
 
   return (
     <div className="ideas-new-container">
-      <div className="container title">アイデアを投稿する</div>
-      <div className="columns">
+      <div className="title is-4 m-6">アイデアを投稿する</div>
+      <div className="columns box m-6">
         <div className="form-container column">
-          質問に対する回答を入力して下さい。
+          <strong>質問に対する回答を入力して下さい。</strong>
+          <br />
           <br />
           <form onSubmit={handleSubmit(postIdea)}>
-            <label htmlFor="problem">
-              <p>1.解決したい問題は？</p>
+            <div className="field">
+              <label htmlFor="problem" className="label">
+                1.解決したい問題は？
+              </label>
               {errors.problem && (
                 <p className="error-message">{errors.problem.message}</p>
               )}
-              <input
-                size="40"
-                type="text"
-                name="problem"
-                id="problem"
-                {...register('problem', {
-                  required: 'この入力項目は必須です。',
-                })}
-                onChange={(e) =>
-                  setFormValues({ ...formValues, problem: e.target.value })
-                }
-              />
-            </label>
-            <br />
-            <label htmlFor="target">
-              <p>2.このサービスを使うターゲットは？</p>
+              <div className="control">
+                <input
+                  type="text"
+                  name="problem"
+                  id="problem"
+                  className="input"
+                  {...register('problem', {
+                    required: 'この入力項目は必須です。',
+                  })}
+                  onChange={(e) =>
+                    setFormValues({ ...formValues, problem: e.target.value })
+                  }
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label htmlFor="target" className="label">
+                2.このサービスを使うターゲットは？
+              </label>
               {errors.target && (
                 <p className="error-message">{errors.target.message}</p>
               )}
               <input
-                size="40"
                 type="text"
                 id="target"
+                className="input"
                 {...register('target', {
                   required: 'この入力項目は必須です。',
                 })}
@@ -77,29 +84,31 @@ const IdeasNew = () => {
                   setFormValues({ ...formValues, target: e.target.value })
                 }
               />
-            </label>
-            <br />
-            <label htmlFor="service">
-              <p>3.サービス名は？（任意）</p>
+            </div>
+            <div className="field">
+              <label htmlFor="service" className="label">
+                3.サービス名は？（任意）
+              </label>
               <input
-                size="30"
                 type="text"
                 id="service"
+                className="input"
                 onChange={(e) =>
                   setFormValues({ ...formValues, service: e.target.value })
                 }
               />
-            </label>
-            <br />
-            <label htmlFor="category">
-              <p>4.このサービスのカテゴリーは？</p>
+            </div>
+            <div className="field">
+              <label htmlFor="category" className="label">
+                4.このサービスのカテゴリーは？
+              </label>
               {errors.category && (
                 <p className="error-message">{errors.category.message}</p>
               )}
               <input
-                size="40"
                 type="text"
                 id="category"
+                className="input"
                 {...register('category', {
                   required: 'この入力項目は必須です。',
                 })}
@@ -107,37 +116,42 @@ const IdeasNew = () => {
                   setFormValues({ ...formValues, category: e.target.value })
                 }
               />
-            </label>
-            <br />
-            <label htmlFor="appealPoint">
-              <p>5.このサービスのアピールポイント、主要機能は？</p>
+            </div>
+            <div className="field">
+              <label htmlFor="appealPoint" className="label">
+                5.このサービスのアピールポイント、主要機能は？
+              </label>
               {errors.appealPoint && (
                 <p className="error-message">{errors.appealPoint.message}</p>
               )}
               <input
-                size="60"
                 type="text"
                 id="appealPoint"
+                className="input"
                 {...register('appealPoint', {
                   required: 'この入力項目は必須です。',
                 })}
                 onChange={(e) =>
-                  setFormValues({ ...formValues, appealPoint: e.target.value })
+                  setFormValues({
+                    ...formValues,
+                    appealPoint: e.target.value,
+                  })
                 }
               />
-            </label>
-            <br />
-            <label htmlFor="competitiveServices">
-              <p>6.競合サービスは？</p>
+            </div>
+            <div className="field">
+              <label htmlFor="competitiveServices" className="label">
+                6.競合サービスは？
+              </label>
               {errors.competitiveServices && (
                 <p className="error-message">
                   {errors.competitiveServices.message}
                 </p>
               )}
               <input
-                size="30"
                 type="text"
                 id="competitiveServices"
+                className="input"
                 {...register('competitiveServices', {
                   required: 'この入力項目は必須です。',
                 })}
@@ -148,10 +162,11 @@ const IdeasNew = () => {
                   })
                 }
               />
-            </label>
-            <br />
-            <label htmlFor="differentiationFactor">
-              <p>7.競合サービスとの差別化要素は？</p>
+            </div>
+            <div className="field">
+              <label htmlFor="differentiationFactor" className="label">
+                7.競合サービスとの差別化要素は？
+              </label>
               {errors.differentiationFactor && (
                 <p className="error-message">
                   {errors.differentiationFactor.message}
@@ -161,6 +176,7 @@ const IdeasNew = () => {
                 size="60"
                 type="text"
                 id="differentiationFactor"
+                className="input"
                 {...register('differentiationFactor', {
                   required: 'この入力項目は必須です。',
                 })}
@@ -171,35 +187,31 @@ const IdeasNew = () => {
                   })
                 }
               />
-            </label>
+            </div>
             <br />
-            <br />
-            <input type="submit" className="button is-success" />
+            <input
+              type="submit"
+              value="投稿する"
+              className="button is-success"
+            />
           </form>
         </div>
         <div className="image-container column">
-          <div className="title">新規投稿イメージ</div>
-          <div className="container">
-            <div className="ideas-container card">
-              <div className="card-header">
-                <div className="card-header-title is-size-4">
-                  [{formValues.problem}]<br />
-                  という問題を解決したい
-                </div>
-              </div>
-              <div className="elevatorpitch-container card-content">
-                [{formValues.service}]というサービスは、
-                <br />[{formValues.problem}
-                ]という問題を解決したい
-                <br /> [{formValues.target}]向けの、
-                <br />[{formValues.category}]です。
-                <br />
-                ユーザーは[
-                {formValues.appealPoint}
-                ]ができ
-                <br />[{formValues.competitiveService}]とは違って、
-                <br />[{formValues.differentiationFactor}]事が特徴です。
-              </div>
+          <div className="title-image mb-4">
+            <strong>新規投稿イメージ</strong>
+          </div>
+          <div className="ideas-container box">
+            <div className="idea-image__title is-size-4 pb-4">
+              [{formValues.problem}]<br />
+              という問題を解決したい
+            </div>
+            <div className="elevatorpitch-container mt-4">
+              [{formValues.service}]というサービスは、[{formValues.problem}
+              ]という問題を解決したい[{formValues.target}]向けの、[
+              {formValues.category}]です。 ユーザーは[
+              {formValues.appealPoint}
+              ]ができ[{formValues.competitiveService}]とは違って、[
+              {formValues.differentiationFactor}]事が特徴です。
             </div>
           </div>
         </div>
