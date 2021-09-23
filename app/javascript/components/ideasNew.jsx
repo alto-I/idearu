@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-import '../stylesheets/ideasNew.css'
+import '../stylesheets/ideasNew.scss'
 
 axios.defaults.headers['X-CSRF-TOKEN'] = document
   .querySelector('meta[name="csrf-token"]')
@@ -35,7 +35,7 @@ const IdeasNew = () => {
   }
 
   return (
-    <>
+    <div className="ideas-new-container">
       <div className="container title">アイデアを投稿する</div>
       <div className="columns">
         <div className="form-container column">
@@ -204,7 +204,7 @@ const IdeasNew = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
