@@ -15,7 +15,7 @@ const IdeasNewPc = (props) => {
 
   return (
     <div className="ideas-new-container">
-      <div className="title is-4 m-6">アイデアを投稿するPC版</div>
+      <div className="title is-4 m-6">アイデアを投稿する</div>
       <div className="columns box m-6">
         <div className="form-container column">
           <strong>質問に対する回答を入力して下さい。</strong>
