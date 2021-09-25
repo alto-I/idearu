@@ -224,7 +224,8 @@ const IdeasNewMobile = (props) => {
             </div>
             <div className="ideas-container box">
               <div className="idea-image__title is-size-5 pb-4">
-                {formValues.problem}<br />
+                {formValues.problem}
+                <br />
                 という問題を解決したい
               </div>
               <div className="elevatorpitch-container mt-4">
@@ -232,13 +233,17 @@ const IdeasNewMobile = (props) => {
                 <br />
                 {formValues.problem}
                 という問題を解決したい
-                <br />{formValues.target}向けの、
-                <br />{formValues.category}です。
+                <br />
+                {formValues.target}向けの、
+                <br />
+                {formValues.category}です。
                 <br /> ユーザーは
                 {formValues.appealPoint}
                 ができ
-                <br />{formValues.competitiveService}とは違って、
-                <br />{formValues.differentiationFactor}事が特徴です。
+                <br />
+                {formValues.competitiveService}とは違って、
+                <br />
+                {formValues.differentiationFactor}事が特徴です。
               </div>
             </div>
           </div>
