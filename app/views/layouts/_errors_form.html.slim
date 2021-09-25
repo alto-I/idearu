@@ -2,5 +2,5 @@
   .alert
     ul
       - model.errors.full_messages.each do |message|
-        li
+        li type="disc" class="has-text-danger ml-5"
           = message
