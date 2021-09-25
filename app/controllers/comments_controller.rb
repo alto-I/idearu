@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
+  before_action :set_idea, only: %i[create]
+
   def create
     @comment = current_user.comments.new(comment_params)
-    @comment.save
-    redirect_back(fallback_location: root_path)
+    if @comment.save
+      redirect_to idea_path(id: @idea.id)
+    else
+      @error_comment = @comment
+      render template: 'ideas/show'
+    end
   end
 
   def destroy
@@ -20,7 +26,7 @@ class CommentsController < ApplicationController
   private
 
   def set_idea
-    @idea = Idea.find(params[:id])
+    @idea = Idea.find(params[:idea_id])
   end
 
   def comment_params
