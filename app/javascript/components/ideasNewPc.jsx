@@ -180,16 +180,26 @@ const IdeasNewPc = (props) => {
           </div>
           <div className="ideas-container box">
             <div className="idea-image__title is-size-4 pb-4">
-              [{formValues.problem}]<br />
+              {formValues.problem}
+              <br />
               という問題を解決したい
             </div>
             <div className="elevatorpitch-container mt-4">
-              [{formValues.service}]というサービスは、[{formValues.problem}
-              ]という問題を解決したい[{formValues.target}]向けの、[
-              {formValues.category}]です。 ユーザーは[
+              {formValues.service}というサービスは、
+              <br />
+              {formValues.problem}
+              という問題を解決したい
+              <br />
+              {formValues.target}向けの、
+              <br />
+              {formValues.category}です。
+              <br /> ユーザーは
               {formValues.appealPoint}
-              ]ができ[{formValues.competitiveService}]とは違って、[
-              {formValues.differentiationFactor}]事が特徴です。
+              ができ
+              <br />
+              {formValues.competitiveService}とは違って、
+              <br />
+              {formValues.differentiationFactor}事が特徴です。
             </div>
           </div>
         </div>

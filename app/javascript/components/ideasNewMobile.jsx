@@ -69,20 +69,18 @@ const IdeasNewMobile = (props) => {
                 {errors.problem && (
                   <p className="error-message">{errors.problem.message}</p>
                 )}
-                <div className="control">
-                  <input
-                    type="text"
-                    name="problem"
-                    id="problem"
-                    className="input"
-                    {...register('problem', {
-                      required: 'この入力項目は必須です。',
-                    })}
-                    onChange={(e) =>
-                      setFormValues({ ...formValues, problem: e.target.value })
-                    }
-                  />
-                </div>
+                <input
+                  type="text"
+                  name="problem"
+                  id="problem"
+                  className="input"
+                  {...register('problem', {
+                    required: 'この入力項目は必須です。',
+                  })}
+                  onChange={(e) =>
+                    setFormValues({ ...formValues, problem: e.target.value })
+                  }
+                />
               </div>
               <div className="field">
                 <label htmlFor="target" className="label">
@@ -110,7 +108,9 @@ const IdeasNewMobile = (props) => {
                 <input
                   type="text"
                   id="service"
+                  name="service"
                   className="input"
+                  {...register('service')}
                   onChange={(e) =>
                     setFormValues({ ...formValues, service: e.target.value })
                   }
@@ -219,21 +219,26 @@ const IdeasNewMobile = (props) => {
       ) : (
         <>
           <div className="image-container">
-            <div className="title-image mb-4">
+            <div className="title-image mb-4 ml-2">
               <strong>新規投稿イメージ</strong>
             </div>
             <div className="ideas-container box">
-              <div className="idea-image__title is-size-4 pb-4">
-                [{formValues.problem}]<br />
+              <div className="idea-image__title is-size-5 pb-4">
+                {formValues.problem}<br />
                 という問題を解決したい
               </div>
               <div className="elevatorpitch-container mt-4">
-                [{formValues.service}]というサービスは、[{formValues.problem}
-                ]という問題を解決したい[{formValues.target}]向けの、[
-                {formValues.category}]です。 ユーザーは[
+                {formValues.service}というサービスは、
+                <br />
+                {formValues.problem}
+                という問題を解決したい
+                <br />{formValues.target}向けの、
+                <br />{formValues.category}です。
+                <br /> ユーザーは
                 {formValues.appealPoint}
-                ]ができ[{formValues.competitiveService}]とは違って、[
-                {formValues.differentiationFactor}]事が特徴です。
+                ができ
+                <br />{formValues.competitiveService}とは違って、
+                <br />{formValues.differentiationFactor}事が特徴です。
               </div>
             </div>
           </div>
