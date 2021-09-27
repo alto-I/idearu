@@ -203,7 +203,7 @@ const Ideas = () => {
         <>ロード中</>
       ) : (
         state.ideasList.map((idea) => (
-          <div className="idea-wrapper" key={idea.id}>
+          <div className="idea-outer" key={idea.id}>
             <div className="idea-caption__items">
               <div className="idea-caption__item">
                 {idea.likes} <AiOutlineLike />
