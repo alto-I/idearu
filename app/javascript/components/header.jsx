@@ -16,7 +16,7 @@ const Header = (props) => {
   }
 
   return (
-    <header>
+    <header className="header">
       <nav
         className="navbar is-light"
         role="navigation"
