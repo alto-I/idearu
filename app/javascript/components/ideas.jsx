@@ -2,21 +2,20 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useReducer, useState } from 'react'
-import '../stylesheets/ideas.css'
+import '../stylesheets/ideas.scss'
 import DayJS from 'react-dayjs'
 
 import { FaRegComment, FaPlus, FaAngleDown } from 'react-icons/fa'
 import { AiOutlineLike } from 'react-icons/ai'
 import fetchIdeas from '../apis/ideas'
 import { REQUEST_STATE } from '../constants'
-
 import { initialState, ideasActionTypes, ideasReducer } from '../reducers/ideas'
 
 const Ideas = () => {
   const [state, dispatch] = useReducer(ideasReducer, initialState)
   const [solved, setSolved] = useState(false)
   const [sort, setSort] = useState('created')
-  const [dropDownIsActive, setDropDownIsActive] = useState(false)
+  const [sortDropDownIsActive, setSortDropDownIsActive] = useState(false)
 
   useEffect(() => {
     dispatch({ type: ideasActionTypes.FETCHING })
@@ -30,11 +29,11 @@ const Ideas = () => {
     )
   }, [])
 
-  const switchDropDownIsActive = () => {
-    if (dropDownIsActive) {
-      setDropDownIsActive(false)
+  const switchSortDropDownIsActive = () => {
+    if (sortDropDownIsActive) {
+      setSortDropDownIsActive(false)
     } else {
-      setDropDownIsActive(true)
+      setSortDropDownIsActive(true)
     }
   }
 
@@ -52,7 +51,7 @@ const Ideas = () => {
       },
     })
     setSort('created')
-    switchDropDownIsActive()
+    switchSortDropDownIsActive()
   }
 
   const ideaSortLikes = () => {
@@ -69,7 +68,7 @@ const Ideas = () => {
       },
     })
     setSort('likes')
-    switchDropDownIsActive()
+    switchSortDropDownIsActive()
   }
 
   const ideaSortLatestComments = () => {
@@ -86,7 +85,7 @@ const Ideas = () => {
       },
     })
     setSort('comments')
-    switchDropDownIsActive()
+    switchSortDropDownIsActive()
   }
 
   const fetchIdeaSolved = () => {
@@ -122,7 +121,7 @@ const Ideas = () => {
       <div className="button-container">
         <div
           className={
-            dropDownIsActive ? 'dropdown is-active m-1' : 'dropdown m-1'
+            sortDropDownIsActive ? 'dropdown is-active m-1' : 'dropdown m-1'
           }
         >
           <div className="dropdown-trigger">
@@ -131,7 +130,7 @@ const Ideas = () => {
               type="button"
               aria-haspopup
               aria-controls="dropdown-menu"
-              onClick={switchDropDownIsActive}
+              onClick={switchSortDropDownIsActive}
             >
               <span>表示順</span>
               <span className="icon is-small">
@@ -201,27 +200,27 @@ const Ideas = () => {
         <>ロード中</>
       ) : (
         state.ideasList.map((idea) => (
-          <div className="ideas-wrapper" key={idea.id}>
-            <div className="ideas-caption">
-              <div className="ideas-likes">
+          <div className="idea-wrapper" key={idea.id}>
+            <div className="idea-caption__items">
+              <div className="idea-caption__item">
                 {idea.likes} <AiOutlineLike />
               </div>
-              <div className="ideas-comments">
+              <div className="idea-caption__item">
                 {idea.comments} <FaRegComment />
               </div>
             </div>
-            <div className="ideas-details">
-              <div className="ideas-title">
+            <div className="idea-details">
+              <div className="idea-title__container">
                 <a href={`ideas/${idea.id}`}>{idea.title}</a>
                 <br />
                 という問題を解決したい
               </div>
-              <div className="ideas-info is-size-7">
-                <div className="ideas-posttime">
+              <div className="idea-info is-size-7">
+                <div className="idea-posttime">
                   投稿日時:
                   <DayJS format="YYYY年MM月DD日">{idea.createdAt}</DayJS>
                 </div>
-                <div className="ideas-author">投稿者:{idea.userName}</div>
+                <div className="idea-author">投稿者:{idea.userName}</div>
               </div>
             </div>
           </div>
