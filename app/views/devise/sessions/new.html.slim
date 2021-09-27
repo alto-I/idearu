@@ -1,24 +1,24 @@
-section.signin-container.hero
-  .signin-wrapper.hero-body
-    .signin-title.title.has-text-centered
+section.container.hero
+  .wrapper.hero-body
+    .title.has-text-centered
       = t('.sign_in')
-    .signin-form__container.columns.is-centered
-      .signin-form__wrapper.column.is-5-tablet.is-4-desktop.is-3-widescreen
-        = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "box signin-form__main" }) do |f|
-          .signin-form__items
-            .field.signin-form__item
+    .form__container.columns.is-centered
+      .form__wrapper.column.is-5-tablet.is-4-desktop.is-3-widescreen
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "box form__main" }) do |f|
+          .form__items
+            .field.form__item
               = f.label :email, class: "label"
               .control
                 = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
-            .field.signin-form__item
+            .field.form__item
               = f.label :password, class: "label"
               .control
                 = f.password_field :password, autocomplete: "current-password", class: "input"
             - if devise_mapping.rememberable?
-              .field.signin-form__item
+              .field.form__item
                 = f.check_box :remember_me
                 = f.label :remember_me
-            .field.signin-form__action.actions
+            .field.form__action.actions
                 = f.submit t('.sign_in'), class: "button is-link is-fullwidth"
     p.signin-links.has-text-centered
       = render "devise/shared/links"

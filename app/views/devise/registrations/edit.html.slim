@@ -1,39 +1,39 @@
-section.edit-container.hero
-  .edit-wrapper.hero-body
-    .edit-title.title.has-text-centered
+section.container.hero
+  .wrapper.hero-body
+    .title.has-text-centered
       = t('.title', resource: resource.model_name.human)
-    .edit-form__container.columns.is-centered
-      .edit-form__wrapper.column.is-5-tablet.is-4-desktop.is-3-widescreen
-        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "box edit-form__main" }) do |f|
+    .form__container.columns.is-centered
+      .form__wrapper.column.is-5-tablet.is-4-desktop.is-3-widescreen
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "box form__main" }) do |f|
           = render "devise/shared/error_messages", resource: resource
-          .edit-form__items
-            .field.edit-form__item
+          .form__items
+            .field.form__item
               = f.label :user, class: "label"
               .control
                 = f.text_field :name, autofocus: true, class: "input"
-            .field.edit-form__item
+            .field.form__item
               = f.label :email, class: "label"
               .control
                 = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
                 div
                   = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
-            .field.edit-form__item
+            .field.form__item
               = f.label :password, class: "label"
                 = t('activerecord.attributes.user.new_password')
                 - if @minimum_password_length
                   = t('devise.shared.minimum_password_length', count: @minimum_password_length)
               .control
                 = f.password_field :password, autocomplete: "new-password", class: "input"
-            .field.edit-form__item
+            .field.form__item
               = f.label :new_password_confirmation, class: "label"
               .control
                 = f.password_field :password_confirmation, autocomplete: "new-password", class: "input"
-            .field.edit-form__item.mb-5
+            .field.form__item.mb-5
               = f.label :current_password, '現在のパスワード（変更を保存する場合）', class: "label"
               .control
                 = f.password_field :current_password, autocomplete: "current-password", class: "input"
-            .field.edit-form__action.actions
+            .field.form__action.actions
               = f.submit t('.update'), class: "button is-link is-fullwidth"
-    .edit-form__link.has-text-centered
+    .form__link.has-text-centered
       = button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete, class: "button is-danger is-small  is-inverted"
