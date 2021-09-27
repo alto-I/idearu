@@ -17,7 +17,7 @@ class IdeasController < ApplicationController
   def new; end
 
   def edit
-    if @idea.user == current_user
+    if current_user.admin || @idea.user == current_user
       render 'edit'
     else
       redirect_to root_path

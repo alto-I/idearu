@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { AiOutlineLike, AiFillLike } from 'react-icons/ai'
@@ -40,13 +38,23 @@ const Like = (props) => {
     <>
       {like.length ? (
         <IconContext.Provider value={{ size: '22px', color: 'orange' }}>
-          <span className="un-like-button" onClick={deleteLike}>
+          <span
+            className="un-like-button"
+            onClick={deleteLike}
+            role="button"
+            tabIndex="0"
+          >
             <AiFillLike />
           </span>
         </IconContext.Provider>
       ) : (
         <IconContext.Provider value={{ size: '22px' }}>
-          <span className="like-button" onClick={postLike}>
+          <span
+            className="like-button"
+            onClick={postLike}
+            role="button"
+            tabIndex="0"
+          >
             <AiOutlineLike />
           </span>
         </IconContext.Provider>

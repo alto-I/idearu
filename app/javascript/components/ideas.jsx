@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useReducer, useState } from 'react'
 import '../stylesheets/ideas.scss'
 import DayJS from 'react-dayjs'
@@ -147,6 +144,8 @@ const Ideas = () => {
                     : 'dropdown-item'
                 }
                 onClick={ideaSortCreated}
+                role="button"
+                tabIndex="0"
               >
                 新着順
               </a>
@@ -155,6 +154,8 @@ const Ideas = () => {
                   sort === 'likes' ? 'dropdown-item is-active' : 'dropdown-item'
                 }
                 onClick={ideaSortLikes}
+                role="button"
+                tabIndex="0"
               >
                 欲しい！順
               </a>
@@ -165,6 +166,8 @@ const Ideas = () => {
                     : 'dropdown-item'
                 }
                 onClick={ideaSortLatestComments}
+                role="button"
+                tabIndex="0"
               >
                 最新コメント順
               </a>
@@ -200,7 +203,7 @@ const Ideas = () => {
         <>ロード中</>
       ) : (
         state.ideasList.map((idea) => (
-          <div className="idea-wrapper" key={idea.id}>
+          <div className="idea-outer" key={idea.id}>
             <div className="idea-caption__items">
               <div className="idea-caption__item">
                 {idea.likes} <AiOutlineLike />
