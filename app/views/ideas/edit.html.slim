@@ -1,14 +1,15 @@
-.edit-container.container.my-3
-  .box
+.container.container.my-3
+  .wrapper.box
     = render(partial: 'layouts/errors_form.html.slim',  locals: { model: @idea })
-    = form_with(model: @idea, local: true) do |form|
-      .field
-        = form.label :title, class: "label"
-        .control
-          = form.text_field :title, value: @idea.title, class: "input"
-      .field
-        = form.label :elevatorpitch, class: "label"
-        .control
-          = form.text_area :elevatorpitch, value: @idea.elevatorpitch, class: "textarea", rows: "10"
-      .actions.has-text-centered
-        = form.submit '内容変更', class: "button is-success"
+    = form_with(model: @idea, local: true, class: "form__main") do |form|
+      .form__items
+        .field.form__item
+          = form.label :title, class: "label"
+          .control
+            = form.text_field :title, value: @idea.title, class: "input"
+        .field.form__item
+          = form.label :elevatorpitch, class: "label"
+          .control
+            = form.text_area :elevatorpitch, value: @idea.elevatorpitch, class: "textarea", rows: "10"
+        .actions.form__action.has-text-centered
+          = form.submit '内容変更', class: "button is-success"
