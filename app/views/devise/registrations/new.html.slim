@@ -1,31 +1,32 @@
-section.hero
-  .hero-body
+section.container.hero
+  .wrapper.hero-body
       .title.has-text-centered
         = t('.sign_up')
-      .columns.is-centered
-        .column.is-5-tablet.is-4-desktop.is-3-widescreen
-          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "box" }) do |f|
+      .form__container.columns.is-centered
+        .form__wrapper.column.is-5-tablet.is-4-desktop.is-3-widescreen
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "box form__main" }) do |f|
             = render "devise/shared/error_messages", resource: resource
-            .field
-              = f.label :user, class: "label"
-              .control
-                = f.text_field :name, autofocus: true, class: "input"
-            .field
-              = f.label :email, class: "label"
-              .control
-                = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
-            .field
-              = f.label :password, class: "label"
-                = t('activerecord.attributes.user.password')
-                - if @minimum_password_length
-                  = t('devise.shared.minimum_password_length', count: @minimum_password_length)
-              .control
-                = f.password_field :password, autocomplete: "new-password", class: "input"
-            .field.mb-5
-              = f.label :password_confirmation, class: "label"
-              .control
-                = f.password_field :password_confirmation, autocomplete: "new-password", class: "input"
-            .field.actions
-              = f.submit t('.sign_up'), class: "button is-link is-fullwidth"
-      p.has-text-centered
+            .form__items
+              .field.form__item
+                = f.label :user, class: "label"
+                .control
+                  = f.text_field :name, autofocus: true, class: "input"
+              .field.form__item
+                = f.label :email, class: "label"
+                .control
+                  = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
+              .field.form__item
+                = f.label :password, class: "label"
+                  = t('activerecord.attributes.user.password')
+                  - if @minimum_password_length
+                    = t('devise.shared.minimum_password_length', count: @minimum_password_length)
+                .control
+                  = f.password_field :password, autocomplete: "new-password", class: "input"
+              .field.form__item.mb-5
+                = f.label :password_confirmation, class: "label"
+                .control
+                  = f.password_field :password_confirmation, autocomplete: "new-password", class: "input"
+              .field.form__action.actions
+                = f.submit t('.sign_up'), class: "button is-link is-fullwidth"
+      p.login-links.has-text-centered
         = render "devise/shared/links"

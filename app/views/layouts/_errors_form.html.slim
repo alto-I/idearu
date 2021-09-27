@@ -1,6 +1,6 @@
 - if model.errors.any?
   .alert
-    ul
+    ul.alert__items
       - model.errors.full_messages.each do |message|
-        li type="disc" class="has-text-danger ml-5"
+        li type="disc" class="alert__item has-text-danger ml-5"
           = message

@@ -6,29 +6,29 @@
   margin-top: -.75rem;
 }
 
-.ideas-wrapper {
+.idea-wrapper {
   border: 1px solid #E4E6E8;
   border-bottom: none;
   display: flex;
 }
 
-.ideas-caption {
+.idea-caption__items {
   background-color: #F7F7F8;
   width: 60px;
   padding: 12px 10px 15px 0;
   text-align: right;
 }
 
-.ideas-details {
+.idea-details {
   padding: 10px;
   flex: 1;
 }
 
-.ideas-info {
+.idea-info {
   display: flex;
 }
 
-.ideas-posttime {
+.idea-posttime {
   margin-right: 8px;
 }
 
