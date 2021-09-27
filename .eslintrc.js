@@ -30,5 +30,8 @@ module.exports = {
     'flowtype/use-flow-type': 'warn',
     'no-console': 'off',
     'react-hooks/exhaustive-deps': 'off',
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/anchor-is-valid': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 }

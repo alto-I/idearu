@@ -144,6 +144,8 @@ const Ideas = () => {
                     : 'dropdown-item'
                 }
                 onClick={ideaSortCreated}
+                role="button"
+                tabIndex="0"
               >
                 新着順
               </a>
@@ -152,6 +154,8 @@ const Ideas = () => {
                   sort === 'likes' ? 'dropdown-item is-active' : 'dropdown-item'
                 }
                 onClick={ideaSortLikes}
+                role="button"
+                tabIndex="0"
               >
                 欲しい！順
               </a>
@@ -162,6 +166,8 @@ const Ideas = () => {
                     : 'dropdown-item'
                 }
                 onClick={ideaSortLatestComments}
+                role="button"
+                tabIndex="0"
               >
                 最新コメント順
               </a>
