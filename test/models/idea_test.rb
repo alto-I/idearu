@@ -14,7 +14,6 @@ class IdeaTest < ActiveSupport::TestCase
     no_user_idea = Idea.new(title: 'タイトル', elevatorpitch: 'エレベーターピッチ', user: nil)
     assert_not no_user_idea.valid?
 
-
     idea = Idea.new(title: 'タイトル', elevatorpitch: 'エレベーターピッチ', user: user)
     assert idea.valid?
   end
