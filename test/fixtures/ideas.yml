@@ -37,7 +37,7 @@ lean_canvas_maker:
 
 #解決していない問題10個
 <% 1.upto(10) do |n| %>
-solved_idea_<%= n %>:
+solved_idea<%= n %>:
   user: user<%= n %>
   title: 解決したい問題<%= n %>
   elevatorpitch: エレベーターピッチ<%= n %>
@@ -48,7 +48,7 @@ solved_idea_<%= n %>:
 
 #解決している問題10個
 <% 1.upto(10) do |n| %>
-not_solved_idea_<%= n %>:
+not_solved_idea<%= n %>:
   user: user<%= n %>
   title: 解決していない問題<%= n %>
   elevatorpitch: エレベーターピッチ<%= n %>
