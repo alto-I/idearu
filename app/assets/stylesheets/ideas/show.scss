@@ -22,6 +22,11 @@
   border-bottom: 1px solid #E4E6E8;
 }
 
+.comment__description {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
 .comment__destroy-link {
   border-top: 1px solid #E4E6E8;
 }
