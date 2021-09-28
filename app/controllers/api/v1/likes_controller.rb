@@ -4,6 +4,7 @@ module Api
   module V1
     class LikesController < ApplicationController
       before_action :set_idea, only: %i[show]
+      before_action :authenticate_user!, only: %i[show create destroy]
 
       def show
         like = Like.where(

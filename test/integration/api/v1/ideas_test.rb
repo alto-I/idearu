@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'test_helper'
+require 'application_system_test_case'
 
 class Api::IdeasTest < ActionDispatch::IntegrationTest
   test 'GET /api/v1/ideas.json' do
@@ -16,7 +17,12 @@ class Api::IdeasTest < ActionDispatch::IntegrationTest
   end
 
   test 'POST /api/v1/ideas' do
-    post api_v1_ideas_path(params: { title: 'title', elevatorpitch: 'elevatorpitch' })
+    user = users(:alto)
+    post api_v1_ideas_path(params: { title: 'title', elevatorpitch: 'elevatorpitch', user: user })
     assert_response :redirect
+
+    sign_in user
+    post api_v1_ideas_path(params: { title: 'title', elevatorpitch: 'elevatorpitch', user: user })
+    assert_response :ok
   end
 end
