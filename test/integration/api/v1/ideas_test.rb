@@ -17,7 +17,7 @@ class Api::IdeasTest < ActionDispatch::IntegrationTest
   end
 
   test 'POST /api/v1/ideas' do
-    user = users(:alto)
+    user = users(:admin)
     post api_v1_ideas_path(params: { title: 'title', elevatorpitch: 'elevatorpitch', user: user })
     assert_response :redirect
 
