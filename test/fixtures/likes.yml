@@ -1,0 +1,5 @@
+<% 1.upto(10) do |n| %>
+like<%= n %>:
+  user: user<%= n %>
+  idea: solved_idea<%= n %>
+<% end %>

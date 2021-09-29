@@ -3,7 +3,7 @@ section.container.hero
     .title.has-text-centered
       = t('.sign_in')
     .form__container.columns.is-centered
-      .form__wrapper.column.is-5-tablet.is-4-desktop.is-3-widescreen
+      .form__wrapper.column.is-6-widescreen
         = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "box form__main" }) do |f|
           .form__items
             .field.form__item

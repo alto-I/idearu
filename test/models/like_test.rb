@@ -4,7 +4,7 @@ require 'test_helper'
 
 class LikeTest < ActiveSupport::TestCase
   test 'validation of uniqueness is effective?' do
-    user = users(:user1)
+    user = users(:admin)
     idea = ideas(:solved_idea1)
     like = Like.new(user: user, idea: idea)
     assert like.valid?
