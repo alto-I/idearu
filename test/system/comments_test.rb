@@ -27,6 +27,20 @@ class CommentsTest < ApplicationSystemTestCase
     assert_text 'テストコメント'
   end
 
+  test 'Is the number of comments correct?' do
+    sign_in users(:user1)
+    visit idea_path(id: @idea.id)
+    within('.comment__length') do
+      assert_text 1
+    end
+
+    fill_in('comment[content]', with: 'テストコメント')
+    click_button 'コメントする'
+    within('.comment__length') do
+      assert_text 2
+    end
+  end
+
   test 'validation' do
     sign_in users(:user1)
     visit idea_path(id: @idea.id)
