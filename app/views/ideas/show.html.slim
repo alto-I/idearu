@@ -44,9 +44,10 @@
               br
           .comment__description.pb-5
             = comment.content
-          - if user_signed_in? && comment.user_id == current_user.id
-            .comment__destroy-link.pt-3.has-text-right
-              = link_to('削除', idea_comment_path(@idea, comment), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "has-text-danger", id: "comment_delete")
+          - if user_signed_in?
+            -if comment.user_id == current_user.id || current_user.admin?
+              .comment__destroy-link.pt-3.has-text-right
+                = link_to('削除', idea_comment_path(@idea, comment), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "has-text-danger", id: "comment_delete")
     - if user_signed_in?
       = form_with(model: [@idea, @comment], class: "comment-form__main my-4") do |form|
         = render(partial: 'layouts/errors_form',  locals: { model: @comment })
