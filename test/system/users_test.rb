@@ -93,5 +93,3 @@ class IdeasTest < ApplicationSystemTestCase
     assert_text 'メールアドレスまたはパスワードが違います。'
   end
 end
-
-
