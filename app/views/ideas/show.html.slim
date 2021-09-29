@@ -23,7 +23,7 @@
           = @idea.comments.length
         - if user_signed_in? && current_user.id == @idea.user.id || current_user.admin
           = link_to('編集', edit_idea_path(@idea) , class: "idea__item column is-narrow has-text-grey")
-          = link_to('削除', @idea, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "idea__item column has-text-danger is-narrow")
+          = link_to('削除', @idea, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "idea__item column has-text-danger is-narrow", id: "idea_delete")
     - if user_signed_in? && current_user.admin?
       .switch-solved
         - if @idea.solved
@@ -44,12 +44,12 @@
               br
           .comment__description.pb-5
             = comment.content
-          - if user_signed_in? && comment.user_id == current_user.id || current_user.admin
+          - if user_signed_in? && comment.user_id == current_user.id
             .comment__destroy-link.pt-3.has-text-right
-              = link_to('削除', idea_comment_path(@idea, comment), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "has-text-danger")
+              = link_to('削除', idea_comment_path(@idea, comment), method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "has-text-danger", id: "comment_delete")
     - if user_signed_in?
       = form_with(model: [@idea, @comment], class: "comment-form__main my-4") do |form|
-        = render(partial: 'layouts/errors_form.html.slim',  locals: { model: @comment })
+        = render(partial: 'layouts/errors_form',  locals: { model: @comment })
         .comment-form__items
           .field.comment-form__item
             .control

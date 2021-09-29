@@ -1,0 +1,6 @@
+<% 1.upto(10) do |n| %>
+comment<%= n %>:
+  user: user<%= n %>
+  idea: solved_idea<%= n %>
+  content: コメント<%= n %>
+<% end %>
