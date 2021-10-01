@@ -25,32 +25,34 @@ const IdeasNewPc = (props) => {
                 <label htmlFor="problem" className="label">
                   1.解決したい問題は？
                   {errors.problem && (
-                    <p className="error-message">{errors.problem.message}</p>
+                    <p className="error-message problem-error">
+                      {errors.problem.message}
+                    </p>
                   )}
-                  <div className="control">
-                    <input
-                      type="text"
-                      name="problem"
-                      id="problem"
-                      className="input"
-                      {...register('problem', {
-                        required: 'この入力項目は必須です。',
-                      })}
-                      onChange={(e) =>
-                        setFormValues({
-                          ...formValues,
-                          problem: e.target.value,
-                        })
-                      }
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    name="problem"
+                    id="problem"
+                    className="input"
+                    {...register('problem', {
+                      required: 'この入力項目は必須です。',
+                    })}
+                    onChange={(e) =>
+                      setFormValues({
+                        ...formValues,
+                        problem: e.target.value,
+                      })
+                    }
+                  />
                 </label>
               </div>
               <div className="field form__item">
                 <label htmlFor="target" className="label">
                   2.このサービスを使うターゲットは？
                   {errors.target && (
-                    <p className="error-message">{errors.target.message}</p>
+                    <p className="error-message target-error">
+                      {errors.target.message}
+                    </p>
                   )}
                   <input
                     type="text"
@@ -82,7 +84,9 @@ const IdeasNewPc = (props) => {
                 <label htmlFor="category" className="label">
                   4.このサービスのカテゴリーは？
                   {errors.category && (
-                    <p className="error-message">{errors.category.message}</p>
+                    <p className="error-message category-error">
+                      {errors.category.message}
+                    </p>
                   )}
                   <input
                     type="text"
@@ -101,7 +105,7 @@ const IdeasNewPc = (props) => {
                 <label htmlFor="appealPoint" className="label">
                   5.このサービスのアピールポイント、主要機能は？
                   {errors.appealPoint && (
-                    <p className="error-message">
+                    <p className="error-message appealpoint-error">
                       {errors.appealPoint.message}
                     </p>
                   )}
@@ -125,7 +129,7 @@ const IdeasNewPc = (props) => {
                 <label htmlFor="competitiveServices" className="label">
                   6.競合サービスは？
                   {errors.competitiveServices && (
-                    <p className="error-message">
+                    <p className="error-message competitiveservices-error">
                       {errors.competitiveServices.message}
                     </p>
                   )}
@@ -149,7 +153,7 @@ const IdeasNewPc = (props) => {
                 <label htmlFor="differentiationFactor" className="label">
                   7.競合サービスとの差別化要素は？
                   {errors.differentiationFactor && (
-                    <p className="error-message">
+                    <p className="error-message differentiationfactor-error">
                       {errors.differentiationFactor.message}
                     </p>
                   )}
