@@ -31,13 +31,13 @@ class CommentsTest < ApplicationSystemTestCase
     sign_in users(:user1)
     visit idea_path(id: @idea.id)
     within('.comment__length') do
-      assert_text 1
+      assert_text 2
     end
 
     fill_in('comment[content]', with: 'テストコメント')
     click_button 'コメントする'
     within('.comment__length') do
-      assert_text 2
+      assert_text 3
     end
   end
 
@@ -53,7 +53,7 @@ class CommentsTest < ApplicationSystemTestCase
     sign_in users(:user1)
     visit idea_path(id: @idea.id)
     page.accept_confirm do
-      click_on :comment_delete
+      page.all('#comment_delete')[0].click
     end
     assert_text 'コメントを削除しました'
   end

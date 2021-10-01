@@ -3,3 +3,27 @@ like<%= n %>:
   user: user<%= n %>
   idea: solved_idea<%= n %>
 <% end %>
+
+like11:
+  user: user2
+  idea: solved_idea1
+
+like12:
+  user: user3
+  idea: solved_idea1
+
+like13:
+  user: user4
+  idea: solved_idea1
+
+like14:
+  user: user5
+  idea: solved_idea2
+
+like15:
+  user: user6
+  idea: solved_idea2
+
+like16:
+  user: user7
+  idea: solved_idea3
