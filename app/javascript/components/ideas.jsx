@@ -140,8 +140,8 @@ const Ideas = () => {
               <a
                 className={
                   sort === 'created'
-                    ? 'dropdown-item is-active'
-                    : 'dropdown-item'
+                    ? 'dropdown-item created is-active'
+                    : 'dropdown-item created'
                 }
                 onClick={ideaSortCreated}
                 role="button"
@@ -151,7 +151,9 @@ const Ideas = () => {
               </a>
               <a
                 className={
-                  sort === 'likes' ? 'dropdown-item is-active' : 'dropdown-item'
+                  sort === 'likes'
+                    ? 'dropdown-item likes is-active'
+                    : 'dropdown-item likes'
                 }
                 onClick={ideaSortLikes}
                 role="button"
@@ -162,8 +164,8 @@ const Ideas = () => {
               <a
                 className={
                   sort === 'comments'
-                    ? 'dropdown-item is-active'
-                    : 'dropdown-item'
+                    ? 'dropdown-item comments is-active'
+                    : 'dropdown-item comments'
                 }
                 onClick={ideaSortLatestComments}
                 role="button"

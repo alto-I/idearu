@@ -5,11 +5,11 @@ import { IconContext } from 'react-icons'
 import fetchLike from '../apis/like'
 import '../stylesheets/likes.scss'
 
-axios.defaults.headers['X-CSRF-TOKEN'] = document
-  .querySelector('meta[name="csrf-token"]')
-  .getAttribute('content')
-
 const Like = (props) => {
+  axios.defaults.headers['X-CSRF-TOKEN'] = document
+    .querySelector('meta[name="csrf-token"]')
+    .getAttribute('content')
+
   const { ideaId } = props
   const [like, setLike] = useState([])
   const [totalLike, setTotalLike] = useState(0)
@@ -35,7 +35,7 @@ const Like = (props) => {
   }
 
   return (
-    <>
+    <div className="like">
       {like.length ? (
         <IconContext.Provider value={{ size: '22px', color: 'orange' }}>
           <span
@@ -67,7 +67,7 @@ const Like = (props) => {
       >
         {totalLike}
       </span>
-    </>
+    </div>
   )
 }
 
