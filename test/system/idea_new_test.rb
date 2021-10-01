@@ -8,6 +8,10 @@ class IdeaNewTest < ApplicationSystemTestCase
     ActionController::Base.allow_forgery_protection = true
   end
 
+  teardown do
+    ActionController::Base.allow_forgery_protection = false
+  end
+
   test 'post idea' do
     visit new_idea_path
     assert_text 'アイデアを投稿する'
