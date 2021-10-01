@@ -47,7 +47,7 @@ class IdeasTest < ApplicationSystemTestCase
   test 'change solved' do
     visit root_path
     click_button '解決済'
-    sleep 2
+    sleep 3
     idea_title = page.all('.idea-title__container')
     assert_equal '解決した問題1', idea_title[0].find('a').text
     assert_equal '解決した問題2', idea_title[1].find('a').text

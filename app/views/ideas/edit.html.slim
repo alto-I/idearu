@@ -1,6 +1,6 @@
 .container.container.my-3
   .wrapper.box
-    = render(partial: 'layouts/errors_form.html.slim',  locals: { model: @idea })
+    = render(partial: 'layouts/errors_form',  locals: { model: @idea })
     = form_with(model: @idea, local: true, class: "form__main") do |form|
       .form__items
         .field.form__item
