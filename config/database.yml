@@ -84,6 +84,9 @@ test:
 #
 production:
   <<: *default
-  database: ideabox_production
-  username: ideabox
-  password: <%= ENV['IDEABOX_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  # database: ideabox_production
+  # username: ideabox
+  # password: <%= ENV['IDEABOX_DATABASE_PASSWORD'] %>
