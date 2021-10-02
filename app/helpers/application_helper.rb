@@ -6,6 +6,7 @@ module ApplicationHelper
       site: 'Ideabox',
       title: '',
       reverse: true,
+      charset: 'utf-8',
       separator: '|',
       description: 'フィヨルドブートキャンプ生徒を対象とした自作サービスアイデア投稿サービス',
       canonical: request.original_url,
@@ -13,13 +14,12 @@ module ApplicationHelper
         { href: image_url('favicon.png') }
       ],
       og: {
-        site_name: 'サイト名',
-        title: 'タイトル',
-        description: 'ディスクリプション',
+        site_name: :site,
+        title: :title,
+        description: :description,
         type: 'website',
         url: request.original_url,
-        # image: image_url('ogp.png'),
-        locale: 'ja_JP'
+        image: image_url('logo.png')
       }
     }
   end
