@@ -22,7 +22,7 @@ const Header = (props) => {
       >
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
-            <img src="/assets/logo.png" alt="title" />
+            <img src="/assets/logo.png" alt="title_logo" />
           </a>
           <a
             role="button"
