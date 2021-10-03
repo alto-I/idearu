@@ -59,7 +59,6 @@ const Like = (props) => {
           </span>
         </IconContext.Provider>
       )}
-      &nbsp;
       <span
         className={
           like.length ? 'total-like-length liked' : 'total-like-length'
