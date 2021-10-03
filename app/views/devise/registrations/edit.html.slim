@@ -16,9 +16,6 @@ section.container.hero
               = f.label :email, class: "label"
               .control
                 = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
-            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-                div
-                  = t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email)
             .field.form__item
               = f.label :password, class: "label"
                 = t('activerecord.attributes.user.new_password')
