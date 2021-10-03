@@ -25,15 +25,15 @@ section.container.hero
                 - if @minimum_password_length
                   = t('devise.shared.minimum_password_length', count: @minimum_password_length)
               .control
-                = f.password_field :password, autocomplete: "new-password", class: "input"
+                = f.password_field :password, class: "input"
             .field.form__item
               = f.label :new_password_confirmation, class: "label"
               .control
-                = f.password_field :password_confirmation, autocomplete: "new-password", class: "input"
+                = f.password_field :password_confirmation, class: "input"
             .field.form__item.mb-5
               = f.label :current_password, '現在のパスワード（変更を保存する場合）', class: "label"
               .control
-                = f.password_field :current_password, autocomplete: "current-password", class: "input"
+                = f.password_field :current_password, class: "input"
             .field.form__action.actions
               = f.submit t('.update'), class: "button is-link is-fullwidth"
     .form__link.has-text-centered
