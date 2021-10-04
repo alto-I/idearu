@@ -19,7 +19,7 @@ jobs:
         node-version:
         - '14.17'
         database-name:
-        - ideabox_test
+        - idearu_test
         database-password:
         - postgres
         database-user:

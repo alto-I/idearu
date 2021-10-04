@@ -3,7 +3,7 @@
     "lint:eslint": "eslint 'app/javascript/**/*.{js,jsx}' --max-warnings=0",
     "lint:prettier": "prettier app/javascript/**/*.{js,jsx} --check"
   },
-  "name": "ideabox",
+  "name": "idearu",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.14.5",
