@@ -8,6 +8,10 @@ class LikesTest < ApplicationSystemTestCase
     ActionController::Base.allow_forgery_protection = true
   end
 
+  teardown do
+    ActionController::Base.allow_forgery_protection = false
+  end
+
   test 'visit idea page with no login' do
     visit idea_path(id: @idea.id)
     assert_no_selector('.like')
