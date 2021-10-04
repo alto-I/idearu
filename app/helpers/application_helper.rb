@@ -6,8 +6,8 @@ module ApplicationHelper
       reverse: true,
       charset: 'utf-8',
       separator: '|',
-      description: 'フィヨルドブートキャンプ生徒を対象とした自作サービスアイデア投稿サービス',
-      canonical: request.original_url,
+      description: 'Web開発者を対象としたWebサービスアイデア投稿・閲覧サービス',
+      canonical: 'https://idearu.herokuapp.com/',
       icon: [
         { href: image_url('favicon.png') }
       ],
@@ -16,7 +16,7 @@ module ApplicationHelper
         title: :title,
         description: :description,
         type: 'website',
-        url: request.original_url,
+        url: 'https://idearu.herokuapp.com/',
         image: image_url('logo.png')
       }
     }
