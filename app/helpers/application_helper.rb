@@ -3,7 +3,6 @@
 module ApplicationHelper
   def default_meta_tags
     {
-      site: 'Ideabox',
       reverse: true,
       charset: 'utf-8',
       separator: '|',
