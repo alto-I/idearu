@@ -1,0 +1,18 @@
+.image__title {
+  border-bottom: 1px solid $grey-lighter;
+}
+
+.error-message {
+  color: red;
+}
+
+.preview {
+  max-width: 560px;
+}
+
+.form__action {
+  @include tablet {
+    max-width: 240px;
+    margin: 0 auto;
+  }
+}

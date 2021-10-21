@@ -1,0 +1,36 @@
+.features__items {
+  display: flex;
+  justify-content: center;
+}
+
+.features__item {
+  padding: 0 .75rem;
+}
+
+.features__item-inner {
+  width: 4rem;
+  height: 4rem;
+  background-color: $grey;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.features__item-icon {
+  font-size: 1rem;
+  margin-bottom: .125em;
+}
+
+.features__item-label {
+  font-size: .625rem;
+}
+
+.features__action {
+  @include tablet {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}

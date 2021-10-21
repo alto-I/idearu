@@ -1,0 +1,97 @@
+.ideas-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  margin-top: -.75rem;
+}
+
+.idea-outer {
+  border: 1px solid $grey-lighter;
+  display: flex;
+  @include mobile {
+    border-width: 1px 0;
+  }
+  &:not(:last-child) {
+    border-bottom: none;
+  }
+  &:first-child {
+    @include tablet {
+      border-radius: 4px 4px 0 0;
+    }
+  }
+  &:last-child {
+    @include tablet {
+      border-radius: 0 0 4px 4px;
+    }
+  }
+}
+
+.idea-caption__items {
+  width: 60px;
+  padding: 12px 10px 15px 0;
+  text-align: right;
+}
+
+.idea-details {
+  padding: 10px;
+  flex: 1;
+}
+
+.idea-info {
+  display: flex;
+}
+
+.idea-posttime {
+  margin-right: 8px;
+}
+
+.columns:last-child {
+  margin-bottom: 0rem;
+}
+
+.new-idea-button-link {
+  color: black;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: orange;
+}
+
+.new-idea-button {
+  font-size: 2rem;
+  line-height: 1rem;
+}
+
+.new-idea-button-content {
+  font-size: .625rem;
+}
+
+.button-container__inner {
+  display: flex;
+  justify-content: space-between;
+  padding: .75rem 1rem;
+}
+
+.navbar-menu {
+  @include mobile {
+    background-color: $black;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+.navbar-item {
+  @include mobile {
+    color: $white;
+    padding: .75rem 1rem;
+  }
+}

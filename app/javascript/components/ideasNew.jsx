@@ -18,13 +18,13 @@ const IdeasNew = () => {
   } = useForm()
 
   const [formValues, setFormValues] = useState({
-    problem: '[解決したい問題]',
-    target: '[ターゲット]',
-    service: '[サービス名（未定）]',
-    category: '[カテゴリー]',
-    appealPoint: '[アピールポイント、主要機能]',
-    competitiveService: '[競合サービス]',
-    differentiationFactor: '[差別化要素]',
+    problem: '［ 解決したい問題 ］',
+    target: '［ ターゲット ］',
+    service: '［ サービス名（未定） ］',
+    category: '［ カテゴリー ］',
+    appealPoint: '［ アピールポイント、主要機能 ］',
+    competitiveService: '［ 競合サービス ］',
+    differentiationFactor: '［ 差別化要素 ］',
   })
 
   const postIdea = () => {
