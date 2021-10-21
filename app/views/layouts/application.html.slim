@@ -12,12 +12,18 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css"
   body
-    = render 'layouts/header'
-    .notice.has-background-info
-      p.has-text-white-ter.has-text-centered
-        = notice
-    .alert.has-background-danger
-      p.has-text-white-ter.has-text-centered
-        = alert
-    = yield
-    = render 'layouts/footer'
+    .wrapper
+      .wrapper__start
+        = render 'layouts/header'
+        - if notice.present?
+          .notice.has-background-success
+            .container.is-max.has-padding
+              p.has-text-white-ter.has-text-centered
+                = notice
+        - if alert.present?
+          .alert.has-background-danger
+            p.has-text-white-ter.has-text-centered
+              = alert
+        = yield
+      .wrapper__end
+        = render 'layouts/footer'

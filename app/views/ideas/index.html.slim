@@ -1,12 +1,33 @@
-.usage-container.hero.has-background-black-ter
-  .usage-body.columns
-    .left-description.column
-      p.has-text-light
-        | idearuはWeb開発者の向けのWebサービスアイデア閲覧・投稿サービスです。エレベーターピッチ形式でアイデアを投稿することができます。
-    .right-description.column
-      ul.has-text-light
-        p.mb-2 ログインすると以下のことができます。
-        li.my-1 <i class="far fa-lightbulb fa-lg icon"></i> アイデア投稿
-        li.my-1 <i class="far fa-thumbs-up fa-lg icon"></i> いいね
-        li.my-1 <i class="far fa-comment fa-lg icon"></i> コメント
+.usage-container.has-background-black-ter
+  .container
+    .usage-body
+      h1.usage-title.title.has-text-white.has-text-centered.is-size-1-tablet.is-size-3-mobile
+        | エレベーター<br class='is-hidden-tablet'>ピッチ形式で<br>Webサービスの<br class='is-hidden-tablet'>アイデアを投稿
+      .features
+        h2.features__title.mb-4.has-text-centered.has-text-white
+          | ログインすると以下のことができます。
+        .features__items
+          .features__item
+            .features__item-inner
+              .features__item-icon
+                i.far.fa-lightbulb.fa-lg
+              .features__item-label
+                | 投稿
+          .features__item
+            .features__item-inner
+              .features__item-icon
+                i.far.fa-thumbs-up.fa-lg
+              .features__item-label
+                | いいね
+          .features__item
+            .features__item-inner
+              .features__item-icon
+                i.far.fa-comment.fa-lg
+              .features__item-label
+                | コメント
+        .features__actions.mt-5
+          .features__action
+            = link_to new_user_registration_path, class: 'button is-warning is-medium is-fullwidth has-text-black' do
+              | アカウント登録
+
 = react_component("ideas")
