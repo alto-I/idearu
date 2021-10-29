@@ -1,26 +1,47 @@
-# README
+# Idearu
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Webサービス開発者向け自作サービスアイデア投稿サービスです。
+- エレベーターピッチ形式でアイデアが投稿でき、通常のメモ等などより解決したい問題とその解決方法がより明確になるように投稿できます。<br>
+  参考：[エレベーターピッチの作り方 \- シンプルな言葉でプロダクトを表現する方法 \- 毎日がもふもふ](https://everyday.mof-mof.co.jp/entry/2018/02/22/122833)
+- ログイン無しでも投稿の一覧を見ることができます。
 
-Things you may want to cover:
+# URL
+https://idearu.herokuapp.com
 
-* Ruby version
+# ローカルでの起動方法
 
-* System dependencies
+~~~
+$ bundle install
+$ yarn
+$ rails db:setup
+$ rails s
+~~~
 
-* Configuration
+# seedデータの設定
+~~~
+$ rails db:seed
+~~~
+テスト用アカウント
+~~~
+メールアドレス: user1@sample.com
+パスワード: password
+~~~
+テスト用管理者アカウント
+~~~
+メールアドレス: admin@sample.com
+パスワード: password
+~~~
 
-* Database creation
+# テスト
+~~~
+$ bundle exec rails test:all
+~~~
 
-* Database initialization
+# Lint
+~~~
+$ bin/yarn lint:eslint
+~~~
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
-
-[idearu] というサービスは、[ブートキャンプ生徒のサービスのネタが無い問題]を解決したい[ブートキャンプ生徒] 向けの、[エレベーターピッチ作成]サービスです。ユーザーは [穴埋めでエレベーターピッチ作成] ができ、[Wiki] とは違って、[フォーマットが固定されていることで解決したい問題とその解決方法が明確になっているアイデアだけが投稿できる] 事が特徴です。
