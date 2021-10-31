@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Ideas::SolvedController < ApplicationController
+class Ideas::SolvedsController < ApplicationController
   before_action :set_idea, only: %i[update destroy]
   before_action :authenticate_user!, only: %i[update destroy]
 

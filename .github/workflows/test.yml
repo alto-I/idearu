@@ -103,7 +103,7 @@ jobs:
         DATABASE_PORT: ${{ matrix.database-port }}
         POSTGRES_DB: ${{ matrix.database-name }}
       run: |
-        bundle exec rails db:migrate
+        bundle exec rails db:setup
         bundle exec rails db:seed
 
     - name: Run Rubocop
