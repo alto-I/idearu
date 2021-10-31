@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root to: 'ideas#index'
   get 'term_of_service', to: 'tos#index'
   get 'policy', to: 'policy#index'
-  post 'ideas/:id/solved', to: 'ideas#solved'
-  post 'ideas/:id/not_solved', to: 'ideas#not_solved'
+  namespace :ideas do
+    resources :solved, only: %i[update destroy]
+  end
   resources :ideas, only: %i[show new create edit update destroy] do
     resources :comments, only: %i[create destroy]
   end
