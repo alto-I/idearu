@@ -37,18 +37,6 @@ class IdeasController < ApplicationController
     redirect_to root_path, notice: '投稿されたサービス案を削除しました。'
   end
 
-  def solved
-    @idea.solved = true
-    @idea.save
-    redirect_to idea_path(id: @idea.id)
-  end
-
-  def not_solved
-    @idea.solved = false
-    @idea.save!
-    redirect_to idea_path(id: @idea.id)
-  end
-
   private
 
   def set_idea

@@ -28,9 +28,9 @@
     - if user_signed_in? && current_user.admin?
       .switch-solved
         - if @idea.solved
-          = link_to('未解決にする', "/ideas/#{params[:id]}/not_solved", method: :post, class: "button is-primary")
+          = link_to('未解決にする', ideas_solved_path(@idea), method: :delete, class: "button is-primary")
         - else
-          = link_to('解決済みにする', "/ideas/#{params[:id]}/solved", method: :post, class: "button is-danger")
+          = link_to('解決済みにする', ideas_solved_path(@idea), method: :patch, class: "button is-danger")
   .comments-container.container
     .comments-title.has-text-weight-bold.my-2.ml-3
       | コメント
