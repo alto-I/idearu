@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class IdeasController < ApplicationController
-  before_action :set_idea, only: %i[show edit update destroy solved not_solved]
-  before_action :authenticate_user!,
-                only: %i[new edit update destroy solved not_solved]
+  before_action :set_idea, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new edit update destroy]
 
   def index
     @ideas = Idea.all
