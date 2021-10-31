@@ -104,7 +104,6 @@ jobs:
         POSTGRES_DB: ${{ matrix.database-name }}
       run: |
         bundle exec rails db:setup
-        bundle exec rails db:seed
 
     - name: Run Rubocop
       run:  bundle exec rubocop
