@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../stylesheets/ideasNew.scss'
 
 const IdeasNewMobile = (props) => {
   const {
@@ -23,9 +22,7 @@ const IdeasNewMobile = (props) => {
 
   return (
     <div className="ideas-new__container">
-      <div className="ideas-new__title title has-text-centered is-4 m-2">
-        アイデアを投稿する
-      </div>
+      <div className="ideas-new__title title is-3">アイデアを投稿する</div>
       <div className="tabs is-toggle is-centered">
         <ul>
           <li
@@ -219,11 +216,11 @@ const IdeasNewMobile = (props) => {
                     />
                   </label>
                 </div>
-                <div className="form__action has-text-centered my-3">
+                <div className="form__action is-medium has-text-centered my-3">
                   <input
                     type="submit"
                     value="投稿する"
-                    className="button is-success"
+                    className="button is-medium is-link is-fullwidth"
                   />
                 </div>
               </div>
@@ -232,17 +229,17 @@ const IdeasNewMobile = (props) => {
         </>
       ) : (
         <>
-          <div className="image__container">
-            <div className="image__introduction mb-4 ml-2">
+          <div className="preview">
+            <div className="preview__introduction mb-4 ml-2">
               <strong>新規投稿イメージ</strong>
             </div>
-            <div className="image__wrapper box">
-              <div className="image__title is-size-5 pb-4">
+            <div className="preview__wrapper box">
+              <div className="preview__title is-size-5 pb-4">
                 {formValues.problem}
                 <br />
                 という問題を解決したい
               </div>
-              <div className="image__elevatorpitch mt-4">
+              <div className="preview__elevatorpitch mt-4">
                 {formValues.service}というサービスは、
                 <br />
                 {formValues.problem}
