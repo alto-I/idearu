@@ -12,9 +12,11 @@
           .user__items.is-flex.is-justify-content-space-between
             .user__item.is-size-6
               | 投稿者:
+              <br class='is-hidden-tablet'>
               = @idea.user.name
             .user__item.is-size-6
               | 投稿日時:
+              <br class='is-hidden-tablet'>
               = l @idea.created_at
         .idea-elevatorpitch.pt-4.is-size-5
           = @idea.elevatorpitch
@@ -26,8 +28,8 @@
               <i class="far fa-comment fa-fw fa-lg "></i>
               = @idea.comments.length
             - if current_user.id == @idea.user.id || current_user.admin
-              = link_to('編集', edit_idea_path(@idea) , class: "idea__item column is-narrow has-text-grey")
-              = link_to('削除', @idea, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "idea__item column has-text-danger is-narrow", id: "idea_delete")
+              = link_to('編集', edit_idea_path(@idea) , class: "idea__item column has-text-grey")
+              = link_to('削除', @idea, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: "idea__item column has-text-danger", id: "idea_delete")
         - if user_signed_in? && current_user.admin?
           .switch-solved
             - if @idea.solved

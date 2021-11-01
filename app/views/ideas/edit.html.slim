@@ -1,6 +1,6 @@
 - content_for(:html_title) { 'アイデア編集' }
-.container.container.my-3
-  .wrapper.box
+.edit_container.container.my-3
+  .box
     = render(partial: 'layouts/errors_form',  locals: { model: @idea })
     = form_with(model: @idea, local: true, class: "form__main") do |form|
       .form__items
