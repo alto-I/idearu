@@ -46,8 +46,8 @@ class IdeasTest < ApplicationSystemTestCase
     visit idea_path(id: @idea.id)
     assert_text '解決したい問題1'
     assert_text 'エレベーターピッチ1'
-    assert_text '投稿者:user1'
-    assert_text '投稿日時:2021年01月01日 09:00'
+    assert_text "投稿者:\nuser1"
+    assert_text "投稿日時:\n2021年01月01日 09:00"
   end
 
   test 'visit idea page no login' do
