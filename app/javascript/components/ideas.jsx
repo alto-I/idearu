@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer, useState } from 'react'
-import '../stylesheets/ideas.scss'
 import DayJS from 'react-dayjs'
 
 import { FaRegComment, FaPlus, FaAngleDown } from 'react-icons/fa'
@@ -114,130 +113,138 @@ const Ideas = () => {
   }
 
   return (
-    <div className="ideas-container">
+    <>
       <div className="button-container">
-        <div
-          className={
-            sortDropDownIsActive ? 'dropdown is-active m-1' : 'dropdown m-1'
-          }
-        >
-          <div className="dropdown-trigger">
-            <button
-              className="button is-small"
-              type="button"
-              aria-haspopup
-              aria-controls="dropdown-menu"
-              onClick={switchSortDropDownIsActive}
-            >
-              <span>表示順</span>
-              <span className="icon is-small">
-                <FaAngleDown />
-              </span>
-            </button>
-          </div>
-          <div className="dropdown-menu" id="dropdown-menu" role="menu">
-            <div className="dropdown-content">
-              <a
-                className={
-                  sort === 'created'
-                    ? 'dropdown-item created is-active'
-                    : 'dropdown-item created'
-                }
-                onClick={ideaSortCreated}
-                role="button"
-                tabIndex="0"
+        <div className="button-container__inner container">
+          <div
+            className={sortDropDownIsActive ? 'dropdown is-active' : 'dropdown'}
+          >
+            <div className="dropdown-trigger">
+              <button
+                className="button is-normal"
+                type="button"
+                aria-haspopup
+                aria-controls="dropdown-menu"
+                onClick={switchSortDropDownIsActive}
               >
-                新着順
-              </a>
-              <a
-                className={
-                  sort === 'likes'
-                    ? 'dropdown-item likes is-active'
-                    : 'dropdown-item likes'
-                }
-                onClick={ideaSortLikes}
-                role="button"
-                tabIndex="0"
-              >
-                欲しい！順
-              </a>
-              <a
-                className={
-                  sort === 'comments'
-                    ? 'dropdown-item comments is-active'
-                    : 'dropdown-item comments'
-                }
-                onClick={ideaSortLatestComments}
-                role="button"
-                tabIndex="0"
-              >
-                最新コメント順
-              </a>
+                <span>表示順</span>
+                <span className="icon is-normal">
+                  <FaAngleDown />
+                </span>
+              </button>
+            </div>
+            <div className="dropdown-menu" id="dropdown-menu" role="menu">
+              <div className="dropdown-content">
+                <a
+                  className={
+                    sort === 'created'
+                      ? 'dropdown-item created is-active'
+                      : 'dropdown-item created'
+                  }
+                  onClick={ideaSortCreated}
+                  role="button"
+                  tabIndex="0"
+                >
+                  新着順
+                </a>
+                <a
+                  className={
+                    sort === 'likes'
+                      ? 'dropdown-item likes is-active'
+                      : 'dropdown-item likes'
+                  }
+                  onClick={ideaSortLikes}
+                  role="button"
+                  tabIndex="0"
+                >
+                  欲しい！順
+                </a>
+                <a
+                  className={
+                    sort === 'comments'
+                      ? 'dropdown-item comments is-active'
+                      : 'dropdown-item comments'
+                  }
+                  onClick={ideaSortLatestComments}
+                  role="button"
+                  tabIndex="0"
+                >
+                  最新コメント順
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="buttons has-addons m-1">
-          <button
-            className={
-              solved
-                ? 'button is-small'
-                : 'button is-small is-success is-selected'
-            }
-            type="button"
-            onClick={fetchIdeaNotSolved}
-          >
-            未解決
-          </button>
-          <button
-            className={
-              solved
-                ? 'button is-small is-danger is-selected'
-                : 'button is-small'
-            }
-            type="button"
-            onClick={fetchIdeaSolved}
-          >
-            解決済
-          </button>
+          <div className="field has-addons">
+            <div className="control">
+              <button
+                className={
+                  solved
+                    ? 'button is-normal'
+                    : 'button is-normal is-link is-selected'
+                }
+                type="button"
+                onClick={fetchIdeaNotSolved}
+              >
+                未解決
+              </button>
+            </div>
+            <div className="control">
+              <button
+                className={
+                  solved
+                    ? 'button is-normal is-link is-selected'
+                    : 'button is-normal'
+                }
+                type="button"
+                onClick={fetchIdeaSolved}
+              >
+                解決済
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      {state.fetchState === REQUEST_STATE.LOADING ? (
-        <>ロード中</>
-      ) : (
-        state.ideasList.map((idea) => (
-          <div className="idea-outer" key={idea.id}>
-            <div className="idea-caption__items">
-              <div className="idea-caption__item">
-                {idea.likes} <AiOutlineLike />
-              </div>
-              <div className="idea-caption__item">
-                {idea.comments} <FaRegComment />
-              </div>
-            </div>
-            <div className="idea-details">
-              <div className="idea-title__container">
-                <a href={`ideas/${idea.id}`}>{idea.title}</a>
-                <br />
-                という問題を解決したい
-              </div>
-              <div className="idea-info is-size-7">
-                <div className="idea-posttime">
-                  投稿日時:
-                  <DayJS format="YYYY年MM月DD日">{idea.createdAt}</DayJS>
+
+      <div className="ideas-container container">
+        {state.fetchState === REQUEST_STATE.LOADING ? (
+          <>ロード中</>
+        ) : (
+          state.ideasList.map((idea) => (
+            <div className="idea-outer" key={idea.id}>
+              <div className="idea-caption__items">
+                <div className="idea-caption__item">
+                  {idea.likes} <AiOutlineLike />
                 </div>
-                <div className="idea-author">投稿者:{idea.userName}</div>
+                <div className="idea-caption__item">
+                  {idea.comments} <FaRegComment />
+                </div>
+              </div>
+              <div className="idea-details">
+                <div className="idea-title__container">
+                  <a href={`ideas/${idea.id}`}>
+                    {idea.title}
+                    という問題を解決したい
+                  </a>
+                </div>
+                <div className="idea-info is-size-7">
+                  <div className="idea-posttime">
+                    投稿日時:
+                    <DayJS format="YYYY年MM月DD日">{idea.createdAt}</DayJS>
+                  </div>
+                  <div className="idea-author">投稿者:{idea.userName}</div>
+                </div>
               </div>
             </div>
-          </div>
-        ))
-      )}
+          ))
+        )}
+      </div>
       <a href="/ideas/new" className="new-idea-button-link is-hidden-desktop">
         <div className="new-idea-button">
           <FaPlus />
         </div>
         <div className="new-idea-button-content">投稿する</div>
       </a>
-    </div>
+    </>
   )
 }
 

@@ -1,25 +1,23 @@
 - content_for(:html_title) { 'ログイン' }
-section.container.hero
-  .wrapper.hero-body
+section.container.is-auth
+  .hero-body
     .title.has-text-centered
       = t('.sign_in')
-    .form__container.columns.is-centered
-      .form__wrapper.column.is-6-widescreen
-        = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "box form__main" }) do |f|
-          .form__items
-            .field.form__item
-              = f.label :email, class: "label"
-              .control
-                = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
-            .field.form__item
-              = f.label :password, class: "label"
-              .control
-                = f.password_field :password, autocomplete: "current-password", class: "input"
-            - if devise_mapping.rememberable?
-              .field.form__item
-                = f.check_box :remember_me
-                = f.label :remember_me
-            .field.form__action.actions
-                = f.submit t('.sign_in'), class: "button is-link is-fullwidth"
+    = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "box form__main" }) do |f|
+      .form__items
+        .field.form__item
+          = f.label :email, class: "label"
+          .control
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
+        .field.form__item
+          = f.label :password, class: "label"
+          .control
+            = f.password_field :password, autocomplete: "current-password", class: "input"
+        - if devise_mapping.rememberable?
+          .field.form__item
+            = f.check_box :remember_me
+            = f.label :remember_me
+        .field.form__action.actions
+            = f.submit t('.sign_in'), class: "button is-link is-fullwidth"
     p.signin-links.has-text-centered
       = render "devise/shared/links"

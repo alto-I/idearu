@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../stylesheets/header.scss'
 
 const Header = (props) => {
   const { isUserSignedIn } = props
@@ -15,11 +14,7 @@ const Header = (props) => {
 
   return (
     <header className="header">
-      <nav
-        className="navbar is-light"
-        role="navigation"
-        aria-label="main navigation"
-      >
+      <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
             <img src="/assets/logo.png" alt="title_logo" />
@@ -39,7 +34,7 @@ const Header = (props) => {
           </a>
         </div>
         <div className={isAcitve ? 'navbar-menu is-active' : 'navbar-menu'}>
-          <div className="navbar-end is-size-7">
+          <div className="navbar-end is-size-6">
             {isUserSignedIn ? (
               <>
                 <a className="navbar-item" href="/ideas/new">
@@ -57,9 +52,14 @@ const Header = (props) => {
                 </a>
               </>
             ) : (
-              <a className="navbar-item" href="/users/sign_in">
-                ログイン
-              </a>
+              <>
+                <a className="navbar-item" href="/users/sign_in">
+                  ログイン
+                </a>
+                <a className="navbar-item" href="/users/sign_up">
+                  アカウント登録
+                </a>
+              </>
             )}
           </div>
         </div>

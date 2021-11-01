@@ -1,29 +1,75 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
-
 $navbar-item-img-max-height: 2.0rem;
-$container-offset: 600px;
+$container-max-width: 768px;
+$box-shadow: none;
+$card-shadow: none;
+$card-header-shadow: none;
+$warning: orange;
+$title-line-height: 1.4;
+
 @import "bulma";
+@import "devise/**/*";
+@import "ideas/**/*";
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper__start {
+  flex: 1;
+}
+
+.main__body {
+  padding: 2rem 0;
+}
+
+.box,
+.card {
+  border: solid 1px $grey-lighter;
+}
+
+.card-header {
+  border-bottom: solid 1px $grey-lighter;
+}
 
 html, body {
   height: 100%;
 }
 
-.columns {
-  margin-left: 0rem;
-  margin-right: 0rem;
-  margin-top: 0rem;
+.container {
+  &.is-auth {
+    max-width: 480px !important;
+  }
+  &.is-max {
+    max-width: 100% !important;
+  }
+  &.is-fullhd {
+    max-width: 1344px !important;
+  }
+  &.has-padding {
+    @include tablet {
+      padding: 0 2rem;
+    }
+    @include mobile {
+      padding: 0 1rem;
+    }
+  }
+}
+
+.field {
+  &:not(:last-child) {
+    margin-bottom: 1.25rem;
+  }
+}
+
+.notice,
+.alert {
+  padding: .75rem 0;
+}
+
+.feature {
+  background-color: orange;
+  width: 64px;
+  height: 64px;
 }
