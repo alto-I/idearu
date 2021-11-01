@@ -57,7 +57,7 @@ const IdeasNewMobile = (props) => {
         <>
           <div className="form__container mx-1">
             <div className="form__introduction mb-3">
-              <strong>質問に対する回答を入力して下さい。</strong>
+              <strong>質問に答えてエレベーターピッチを作成しよう。</strong>
             </div>
             <form onSubmit={handleSubmit(postIdea)} className="form__main">
               <div className="form__items">

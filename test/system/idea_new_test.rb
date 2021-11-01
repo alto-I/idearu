@@ -29,11 +29,11 @@ class IdeaNewTest < ApplicationSystemTestCase
   test 'answers updated in real time' do
     visit new_idea_path
     fill_in('problem', with: 'aiueo')
-    within('.image__title') do
-      assert_text "aiueo\nという問題を解決したい"
+    within('.preview__title') do
+      assert_text 'aiueoという問題を解決したい'
     end
     fill_in('target', with: 'aiueo')
-    within('.image__elevatorpitch') do
+    within('.preview__elevatorpitch') do
       assert_text 'aiueo向けの、'
     end
   end

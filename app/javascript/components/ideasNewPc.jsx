@@ -23,7 +23,7 @@ const IdeasNewPc = (props) => {
             <div className="form__container column">
               <div className="form__introduction mb-5">
                 <h2 className="title is-size-5">
-                  質問に答えてエレベーピッチを作成しよう。
+                  質問に答えてエレベーターピッチを作成しよう。
                 </h2>
               </div>
               <form onSubmit={handleSubmit(postIdea)} className="form__main">

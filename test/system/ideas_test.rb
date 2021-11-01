@@ -10,44 +10,44 @@ class IdeasTest < ApplicationSystemTestCase
   test 'are the submitted elements displayed correctly' do
     visit root_path
     idea = page.all('.idea-outer')
-    assert_equal "0\n0\nブートキャンプ生徒のサービスのネタが無い問題\nという問題を解決したい\n投稿日時:2021年01月01日\n投稿者:admin", idea[0].text
+    assert_equal "0\n0\nブートキャンプ生徒のサービスのネタが無い問題という問題を解決したい\n投稿日時:2021年01月01日\n投稿者:admin", idea[0].text
   end
 
   test 'sort and change solved idea' do
     visit root_path
     idea_title = page.all('.idea-title__container')
-    assert_equal 'ブートキャンプ生徒のサービスのネタが無い問題', idea_title[0].find('a').text
-    assert_equal '就職時に紹介状が欲しいが、頼むのが恥ずかしい', idea_title[1].find('a').text
-    assert_equal '食材に含まれている糖質量が探し辛い', idea_title[2].find('a').text
-    assert_equal 'リーンキャンバスを簡単に作り、公開したい', idea_title[3].find('a').text
+    assert_equal 'ブートキャンプ生徒のサービスのネタが無い問題という問題を解決したい', idea_title[0].find('a').text
+    assert_equal '就職時に紹介状が欲しいが、頼むのが恥ずかしいという問題を解決したい', idea_title[1].find('a').text
+    assert_equal '食材に含まれている糖質量が探し辛いという問題を解決したい', idea_title[2].find('a').text
+    assert_equal 'リーンキャンバスを簡単に作り、公開したいという問題を解決したい', idea_title[3].find('a').text
 
     find('.dropdown-trigger').click
     find('.likes').click
     idea_title = page.all('.idea-title__container')
-    assert_equal '解決したい問題1', idea_title[0].find('a').text
-    assert_equal '解決したい問題2', idea_title[1].find('a').text
-    assert_equal '解決したい問題3', idea_title[2].find('a').text
+    assert_equal '解決したい問題1という問題を解決したい', idea_title[0].find('a').text
+    assert_equal '解決したい問題2という問題を解決したい', idea_title[1].find('a').text
+    assert_equal '解決したい問題3という問題を解決したい', idea_title[2].find('a').text
 
     find('.dropdown-trigger').click
     find('.comments').click
     idea_title = page.all('.idea-title__container')
-    assert_equal '解決したい問題3', idea_title[0].find('a').text
-    assert_equal '解決したい問題2', idea_title[1].find('a').text
-    assert_equal '解決したい問題1', idea_title[2].find('a').text
+    assert_equal '解決したい問題3という問題を解決したい', idea_title[0].find('a').text
+    assert_equal '解決したい問題2という問題を解決したい', idea_title[1].find('a').text
+    assert_equal '解決したい問題1という問題を解決したい', idea_title[2].find('a').text
 
     click_button '解決済'
     idea_title = page.all('.idea-title__container')
-    assert_equal '解決した問題1', idea_title[0].find('a').text
-    assert_equal '解決した問題2', idea_title[1].find('a').text
-    assert_equal '解決した問題3', idea_title[2].find('a').text
+    assert_equal '解決した問題1という問題を解決したい', idea_title[0].find('a').text
+    assert_equal '解決した問題2という問題を解決したい', idea_title[1].find('a').text
+    assert_equal '解決した問題3という問題を解決したい', idea_title[2].find('a').text
   end
 
   test 'visit idea page' do
     visit idea_path(id: @idea.id)
     assert_text '解決したい問題1'
     assert_text 'エレベーターピッチ1'
-    assert_text '投稿者: user1'
-    assert_text '投稿日時: 2021年01月01日 09:00'
+    assert_text '投稿者:user1'
+    assert_text '投稿日時:2021年01月01日 09:00'
   end
 
   test 'visit idea page no login' do

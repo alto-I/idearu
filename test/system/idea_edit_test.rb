@@ -23,7 +23,7 @@ class IdeaEditTest < ApplicationSystemTestCase
     fill_in('idea[title]', with: '編集されたタイトル')
     click_button '内容変更'
     assert_text 'サービス案を更新しました。'
-    within('.idea-title') do
+    within('.title') do
       assert_text '編集されたタイトル'
     end
   end
