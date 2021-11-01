@@ -11,9 +11,7 @@ https://idearu.herokuapp.com
 # ローカルでの起動方法
 
 ~~~
-$ bundle install
-$ yarn
-$ rails db:setup
+$ bin/setup
 $ rails s
 ~~~
 
