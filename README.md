@@ -5,15 +5,27 @@
   参考：[エレベーターピッチの作り方 \- シンプルな言葉でプロダクトを表現する方法 \- 毎日がもふもふ](https://everyday.mof-mof.co.jp/entry/2018/02/22/122833)
 - ログイン無しでも投稿の一覧を見ることができます。
 
+# スクリーンショット
+| トップページ | 新規投稿 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![image-20211101203647313](https://tva1.sinaimg.cn/large/008i3skNgy1gvzvrlh9xpj31fv0u0jvm.jpg) | ![image-20211101203710901](https://tva1.sinaimg.cn/large/008i3skNgy1gvzvrzlpjhj31fv0u0mzz.jpg) |
+
+| アイデアページ | 編集ページ |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![image-20211101203837185](https://tva1.sinaimg.cn/large/008i3skNgy1gvzvthu951j31fx0u0tbn.jpg) | ![image-20211101203858419](https://tva1.sinaimg.cn/large/008i3skNgy1gvzvtujg3qj31fv0u0gnr.jpg) |
+
+
+
+
+
+
 # URL
 https://idearu.herokuapp.com
 
 # ローカルでの起動方法
 
 ~~~
-$ bundle install
-$ yarn
-$ rails db:setup
+$ bin/setup
 $ rails s
 ~~~
 
