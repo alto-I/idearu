@@ -8,7 +8,7 @@ class Ideas::SolvedController < ApplicationController
     if @idea.update(solved: true)
       redirect_to idea_path(id: @idea.id), notice: 'サービス案を「解決済」に分類しました。'
     else
-      redirect_to idea_path(id: @idea.id), alert: 'サービス案を「解決済」に分類することgit に失敗しました。'
+      redirect_to idea_path(id: @idea.id), alert: 'サービス案を「解決済」に分類することに失敗しました。'
     end
   end
 
