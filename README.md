@@ -6,14 +6,14 @@
 - ログイン無しでも投稿の一覧を見ることができます。
 
 # スクリーンショット
-| トップページ | 新規投稿 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20211101203647313](https://tva1.sinaimg.cn/large/008i3skNgy1gvzvrlh9xpj31fv0u0jvm.jpg) | ![image-20211101203710901](https://tva1.sinaimg.cn/large/008i3skNgy1gvzvrzlpjhj31fv0u0mzz.jpg) |
-
-| アイデアページ | 編集ページ |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![image-20211101203837185](https://tva1.sinaimg.cn/large/008i3skNgy1gvzvthu951j31fx0u0tbn.jpg) | ![image-20211101203858419](https://tva1.sinaimg.cn/large/008i3skNgy1gvzvtujg3qj31fv0u0gnr.jpg) |
-
+## トップページ
+![image-20211104141043738](https://tva1.sinaimg.cn/large/008i3skNgy1gw31gvcv0aj314z0u0gpv.jpg)
+## 新規投稿
+![image-20211104141149801](https://tva1.sinaimg.cn/large/008i3skNgy1gw31hyhljuj318r0u0775.jpg)
+## アイデアページ
+![image-20211104141249522](https://tva1.sinaimg.cn/large/008i3skNgy1gw31izx7m1j318m0u0whf.jpg)
+## 編集ページ
+![image-20211104141329757](https://tva1.sinaimg.cn/large/008i3skNgy1gw31jp52w6j318p0u0q55.jpg)
 
 
 
